@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YourBrand</title>
+  <title>Carpenteria Metallica</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -13,8 +13,8 @@
 <body class="bg-white text-gray-900">
 
   <!-- Navbar -->
-  <nav class="flex justify-between items-center px-8 py-5 border-b sticky top-0 bg-white/80 backdrop-blur">
-    <h1 class="text-lg font-semibold tracking-tight">YourBrand</h1>
+  <nav class="flex justify-between items-center px-8 py-5 border-b sticky top-0 bg-white/90 backdrop-blur z-50">
+    <h1 class="text-lg font-bold">Carpenteria Metallica</h1>
     <div class="space-x-8 text-sm text-gray-600">
       <a href="#servizi" class="hover:text-black">Servizi</a>
       <a href="#about" class="hover:text-black">Chi siamo</a>
@@ -23,35 +23,48 @@
   </nav>
 
   <!-- Hero -->
-  <section class="flex flex-col items-center justify-center text-center py-32 px-6">
-    <h2 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-      Crescita semplice.
-      <br />
-      Risultati concreti.
-    </h2>
-    <p class="max-w-xl text-gray-500 text-lg mb-10">
-      Aiutiamo aziende e professionisti a migliorare la loro presenza digitale con soluzioni essenziali e moderne.
-    </p>
-    <button class="px-8 py-3 bg-black text-white rounded-full hover:opacity-90 transition">
-      Contattaci
-    </button>
+  <section class="relative flex flex-col items-center justify-center text-center py-32 px-6 bg-gray-900 text-white">
+    <div class="absolute inset-0">
+      <img src="https://via.placeholder.com/1920x600?text=Hero+Image" alt="Hero" class="w-full h-full object-cover opacity-50">
+    </div>
+    <div class="relative z-10 max-w-3xl">
+      <h2 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Carpenteria Metallica di Precisione</h2>
+      <p class="text-lg mb-8">Realizzazione di strutture metalliche su misura e lavorazioni di carpenteria pesante.</p>
+      <button class="px-8 py-3 bg-orange-600 text-white rounded-full hover:opacity-90 transition">Contattaci</button>
+    </div>
   </section>
 
   <!-- Servizi -->
   <section id="servizi" class="py-24 px-6 bg-gray-50">
-    <h3 class="text-3xl font-semibold text-center mb-16">Servizi</h3>
-    <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-      <div class="p-8 bg-white rounded-2xl shadow-sm hover:shadow-md transition">
-        <h4 class="text-lg font-semibold mb-3">Consulenza</h4>
-        <p class="text-gray-500 text-sm">Strategie su misura per far crescere il tuo business in modo sostenibile.</p>
+    <h3 class="text-3xl font-semibold text-center mb-16">I nostri servizi</h3>
+    <div class="grid md:grid-cols-4 gap-10 max-w-6xl mx-auto">
+      <div class="p-8 bg-white rounded-2xl shadow-sm hover:shadow-md transition text-center">
+        <div class="mb-4">
+          <img src="https://via.placeholder.com/60?text=Icon" alt="Servizio 1" class="mx-auto">
+        </div>
+        <h4 class="text-lg font-semibold mb-2">Strutture in Acciaio</h4>
+        <p class="text-gray-500 text-sm">Progettazione e realizzazione di strutture metalliche personalizzate.</p>
       </div>
-      <div class="p-8 bg-white rounded-2xl shadow-sm hover:shadow-md transition">
-        <h4 class="text-lg font-semibold mb-3">Sviluppo</h4>
-        <p class="text-gray-500 text-sm">Siti e soluzioni digitali veloci, moderni e performanti.</p>
+      <div class="p-8 bg-white rounded-2xl shadow-sm hover:shadow-md transition text-center">
+        <div class="mb-4">
+          <img src="https://via.placeholder.com/60?text=Icon" alt="Servizio 2" class="mx-auto">
+        </div>
+        <h4 class="text-lg font-semibold mb-2">Carpenteria Pesante</h4>
+        <p class="text-gray-500 text-sm">Lavorazioni industriali e montaggi di carpenteria su misura.</p>
       </div>
-      <div class="p-8 bg-white rounded-2xl shadow-sm hover:shadow-md transition">
-        <h4 class="text-lg font-semibold mb-3">Marketing</h4>
-        <p class="text-gray-500 text-sm">Campagne mirate per aumentare visibilità e acquisire clienti.</p>
+      <div class="p-8 bg-white rounded-2xl shadow-sm hover:shadow-md transition text-center">
+        <div class="mb-4">
+          <img src="https://via.placeholder.com/60?text=Icon" alt="Servizio 3" class="mx-auto">
+        </div>
+        <h4 class="text-lg font-semibold mb-2">Lavorazioni Inox</h4>
+        <p class="text-gray-500 text-sm">Costruzioni e finiture in acciaio inox di alta precisione.</p>
+      </div>
+      <div class="p-8 bg-white rounded-2xl shadow-sm hover:shadow-md transition text-center">
+        <div class="mb-4">
+          <img src="https://via.placeholder.com/60?text=Icon" alt="Servizio 4" class="mx-auto">
+        </div>
+        <h4 class="text-lg font-semibold mb-2">Scale e Soppalchi</h4>
+        <p class="text-gray-500 text-sm">Realizzazione di scale e soppalchi industriali su misura.</p>
       </div>
     </div>
   </section>
@@ -60,22 +73,32 @@
   <section id="about" class="py-24 px-6 text-center">
     <h3 class="text-3xl font-semibold mb-6">Chi siamo</h3>
     <p class="max-w-2xl mx-auto text-gray-500 text-lg">
-      Un team focalizzato su risultati concreti. Crediamo nella semplicità: meno complessità, più valore.
+      Siamo specializzati nella carpenteria metallica. Con anni di esperienza garantiamo lavorazioni precise e strutture affidabili per ogni tipo di esigenza industriale.
     </p>
   </section>
 
   <!-- Contatti -->
   <section id="contatti" class="py-24 px-6 bg-gray-50 text-center">
     <h3 class="text-3xl font-semibold mb-6">Contatti</h3>
-    <p class="text-gray-500 mb-6">info@yourbrand.com</p>
-    <button class="px-8 py-3 border rounded-full hover:bg-black hover:text-white transition">
-      Scrivici
-    </button>
+    <p class="text-gray-500 mb-6">info@carpenteriametallica.com</p>
+    <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+      <div>
+        <iframe class="w-full h-64 rounded-xl" src="https://maps.google.com/maps?q=via%20esempio%201&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"></iframe>
+      </div>
+      <div>
+        <form class="flex flex-col gap-4">
+          <input type="text" placeholder="Nome" class="p-3 border rounded-lg">
+          <input type="email" placeholder="Email" class="p-3 border rounded-lg">
+          <textarea placeholder="Messaggio" class="p-3 border rounded-lg h-32"></textarea>
+          <button class="px-6 py-3 bg-orange-600 text-white rounded-full hover:opacity-90 transition">Invia</button>
+        </form>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
   <footer class="py-8 text-center text-sm text-gray-400 border-t">
-    © 2026 YourBrand — Tutti i diritti riservati
+    © 2026 Carpenteria Metallica — Tutti i diritti riservati
   </footer>
 
 </body>
