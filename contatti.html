@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Contatti - M.C.M.A Coperture</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-white text-gray-900">
+
+<!-- Navbar -->
+<nav class="flex justify-between items-center px-6 md:px-8 py-5 border-b sticky top-0 bg-white/90 backdrop-blur z-50">
+  <h1 class="text-lg font-bold">M.C.M.A Coperture</h1>
+  <div class="flex space-x-6 text-sm text-gray-600">
+    <a href="index.html">Home</a>
+    <a href="servizi.html">Servizi</a>
+    <a href="realizzazioni.html">Realizzazioni</a>
+    <a href="contatti.html">Contatti</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="relative h-64 md:h-80 flex items-center justify-center text-white mb-16">
+  <div 
+    class="absolute inset-0 bg-cover bg-center"
+    style="background-image: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2070&auto=format&fit=crop');">
+  </div>
+  <div class="absolute inset-0 bg-black opacity-60"></div>
+  <h1 class="relative z-10 text-3xl md:text-5xl font-bold">
+    Contatti
+  </h1>
+</div>
+
+<!-- CONTENUTO -->
+<section class="px-4 md:px-6 pb-20">
+
+  <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-10">
+
+    <!-- Info -->
+    <div class="text-left">
+      <h2 class="text-2xl font-semibold mb-4">Contattaci</h2>
+      
+      <p class="text-gray-600 mb-2">
+        Email: mcma.coperture@hotmail.com
+      </p>
+
+      <p class="text-gray-600 mb-4">
+        Telefono: +39 328 3480607
+      </p>
+
+      <p class="text-gray-500 text-sm">
+        Via Pasino Sforza 61, San Colombano al Lambro
+      </p>
+    </div>
+
+    <!-- Form -->
+    <form action="https://formspree.io/f/yourcode" method="POST" class="flex flex-col gap-4">
+      <input type="text" name="nome" placeholder="Nome" class="p-4 border rounded-lg">
+      <input type="email" name="email" placeholder="Email" class="p-4 border rounded-lg">
+      <textarea name="messaggio" placeholder="Messaggio" class="p-4 border rounded-lg h-32"></textarea>
+      <button class="px-6 py-4 bg-orange-600 text-white rounded-full">
+        Invia
+      </button>
+    </form>
+
+  </div>
+
+</section>
+
+<!-- Footer -->
+<footer class="py-10 text-center text-sm text-gray-500 border-t space-y-2">
+  <p>P.IVA: 13216840860</p>
+  <p>Indirizzo: Via Pasino Sforza 61, San Colombano al Lambro</p>
+  <p>Telefono: +39 328 3480607</p>
+  <p>Email: mcma.coperture@hotmail.com</p>
+  <p class="text-gray-400 mt-4">© 2026 M.C.M.A Coperture</p>
+</footer>
+
+</body>
+</html>
