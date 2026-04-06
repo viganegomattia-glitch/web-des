@@ -197,6 +197,16 @@ function closeModal() {
   document.getElementById("modal").classList.remove("flex");
 }
 </script>
+  <script>
+function toggleGallery(id) {
+  document.querySelectorAll('[id^="gallery"]').forEach(el => {
+    if (el.id !== id) el.classList.add("hidden");
+  });
+
+  const el = document.getElementById(id);
+  el.classList.toggle("hidden");
+}
+</script>
  <div id="modal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50" onclick="closeModal()">
   <img id="modalImg" class="max-w-4xl max-h-[90vh] rounded-lg">
 </div> 
