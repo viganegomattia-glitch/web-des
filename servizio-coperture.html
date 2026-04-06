@@ -1,16 +1,140 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
-<title>Servizio</title>
-<script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <title>Carpenteria - M.C.M.A Coperture</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="p-10">
-<h1 class="text-3xl font-bold mb-6">Coperture e Lattoneria</h1>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-  <img src="https://via.placeholder.com/400" />
-  <img src="https://via.placeholder.com/400" />
-  <img src="https://via.placeholder.com/400" />
+
+<body class="bg-white text-gray-900">
+
+<!-- Navbar -->
+<nav class="flex justify-between items-center px-6 md:px-8 py-5 border-b sticky top-0 bg-white/90 backdrop-blur z-50">
+  <h1 class="text-lg font-bold">M.C.M.A Coperture</h1>
+  <div class="flex space-x-6 text-sm text-gray-600">
+    <a href="servizi.html" class="hover:text-black">Servizi</a>
+    <a href="realizzazioni.html" class="hover:text-black">Realizzazioni</a>
+    <a href="index.html" class="hover:text-black">Chi siamo</a>
+    <a href="contatti.html" class="hover:text-black">Contatti</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="relative h-64 md:h-80 flex items-center justify-center text-white mb-16">
+  <div 
+    class="absolute inset-0 bg-cover bg-center"
+    style="background-image: url('https://images.unsplash.com/photo-1581092921461-eab10380d70d?q=80&w=2070&auto=format&fit=crop');">
+  </div>
+  <div class="absolute inset-0 bg-black opacity-60"></div>
+  <h1 class="relative z-10 text-3xl md:text-5xl font-bold text-center px-4">
+    Coperture
+  </h1>
 </div>
-<a href="index.html" class="block mt-10 text-blue-500">← Torna indietro</a>
+
+<!-- CONTENUTO -->
+<section class="px-4 md:px-6 pb-20">
+
+  <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+
+    <!-- CANTIERE 1 -->
+    <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition flex flex-col">
+
+      <img src="LINK_CLOUDINARY_ANTEPRIMA" 
+           class="w-full h-56 object-cover transition duration-300 hover:scale-105">
+
+      <div class="p-5 flex flex-col flex-grow">
+        <h2 class="text-lg font-semibold mb-2">Nome cantiere</h2>
+        <p class="text-gray-500 text-sm mb-4">Descrizione breve.</p>
+
+        <button onclick="toggleGallery('gallery1')" 
+          class="mt-auto px-5 py-3 bg-black text-white rounded-full text-sm">
+          Vedi lavori
+        </button>
+      </div>
+
+      <!-- GALLERY -->
+      <div id="gallery1" class="hidden p-5 pt-0 grid grid-cols-2 md:grid-cols-3 gap-4">
+        <img src="LINK1" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+        <img src="LINK2" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+        <img src="LINK3" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+        <img src="LINK4" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+        <img src="LINK5" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+      </div>
+
+    </div>
+
+    <!-- DUPLICA SOLO I CANTIERI DI QUESTO SERVIZIO -->
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="py-10 text-center text-sm text-gray-500 border-t space-y-2">
+  <p>P.IVA: 13216840860</p>
+
+  <p>
+    Indirizzo: 
+    <a href="https://www.google.com/maps/search/?api=1&query=Via+Pasino+Sforza+61+San+Colombano+al+Lambro" 
+       target="_blank" class="hover:underline">
+      Via Pasino Sforza 61, San Colombano al Lambro
+    </a>
+  </p>
+
+  <p>
+    Telefono: 
+    <a href="tel:+393283480607" class="text-blue-500 hover:underline">
+      +39 328 3480607
+    </a>
+  </p>
+
+  <p>
+    Email: 
+    <a href="mailto:mcma.coperture@hotmail.com" class="text-blue-500 hover:underline">
+      mcma.coperture@hotmail.com
+    </a>
+  </p>
+
+  <p>
+    Instagram: 
+    <a href="https://www.instagram.com/m.c.m.a.coperture" target="_blank"
+       class="text-blue-500 hover:underline">
+      @m.c.m.a.coperture
+    </a>
+  </p>
+
+  <p class="text-gray-400 mt-4">
+    © 2026 M.C.M.A Coperture — Tutti i diritti riservati
+  </p>
+</footer>
+
+<!-- SCRIPT -->
+<script>
+function toggleGallery(id) {
+  document.querySelectorAll('[id^="gallery"]').forEach(el => {
+    if (el.id !== id) el.classList.add("hidden");
+  });
+
+  const el = document.getElementById(id);
+  el.classList.toggle("hidden");
+}
+
+function openModal(src) {
+  document.getElementById("modal").classList.remove("hidden");
+  document.getElementById("modal").classList.add("flex");
+  document.getElementById("modalImg").src = src;
+}
+
+function closeModal() {
+  document.getElementById("modal").classList.add("hidden");
+  document.getElementById("modal").classList.remove("flex");
+}
+</script>
+
+<!-- MODAL -->
+<div id="modal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50" onclick="closeModal()">
+  <img id="modalImg" class="max-w-4xl max-h-[90vh] rounded-lg">
+</div>
+
 </body>
 </html>
