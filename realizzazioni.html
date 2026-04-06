@@ -44,36 +44,89 @@
     <!-- START -->
     <!-- Usa questo blocco per tutti -->
 
-    <!-- Cantiere 1 -->
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition flex flex-col">
-      <img src="img/cantiere1/cantiere1_1.jpg" class="w-full h-56 object-cover hover:scale-105 transition duration-300">
-      <div class="p-5 flex flex-col flex-grow">
-        <h2 class="text-lg font-semibold mb-2">Cantiere 1</h2>
-        <p class="text-gray-500 text-sm mb-4 flex-grow">Descrizione lavoro.</p>
-        <a href="cantiere1.html" class="mt-auto px-5 py-3 bg-black text-white rounded-full text-sm text-center hover:opacity-90">Vedi gallery</a>
-      </div>
-    </div>
+   <!-- Cantiere 1 Vergiate-->
+<div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition flex flex-col">
 
-    <!-- Cantiere 2 -->
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition flex flex-col">
-      <img src="img/cantiere2/cantiere2_1.jpg" class="w-full h-56 object-cover hover:scale-105 transition duration-300">
-      <div class="p-5 flex flex-col flex-grow">
-        <h2 class="text-lg font-semibold mb-2">Cantiere 2</h2>
-        <p class="text-gray-500 text-sm mb-4 flex-grow">Descrizione lavoro.</p>
-        <a href="cantiere2.html" class="mt-auto px-5 py-3 bg-black text-white rounded-full text-sm text-center">Vedi gallery</a>
-      </div>
-    </div>
+  <img src="LINK_CLOUDINARY_ANTEPRIMA" class="w-full h-56 object-cover">
 
-    <!-- Cantiere 3 -->
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition flex flex-col">
-      <img src="img/cantiere3/cantiere3_1.jpg" class="w-full h-56 object-cover hover:scale-105 transition duration-300">
-      <div class="p-5 flex flex-col flex-grow">
-        <h2 class="text-lg font-semibold mb-2">Cantiere 3</h2>
-        <p class="text-gray-500 text-sm mb-4 flex-grow">Descrizione lavoro.</p>
-        <a href="cantiere3.html" class="mt-auto px-5 py-3 bg-black text-white rounded-full text-sm text-center">Vedi gallery</a>
-      </div>
-    </div>
+  <div class="p-5 flex flex-col flex-grow">
+    <h2 class="text-lg font-semibold mb-2">Vergiate</h2>
+    <p class="text-gray-500 text-sm mb-4">Descrizione lavoro.</p>
 
+    <button onclick="toggleGallery('gallery1')" 
+      class="mt-auto px-5 py-3 bg-black text-white rounded-full text-sm">
+      Vedi lavori
+    </button>
+  </div>
+
+  <!-- GALLERY NASCOSTA -->
+  <div id="gallery1" class="hidden p-5 pt-0 grid grid-cols-2 md:grid-cols-3 gap-4">
+
+    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479847/vergiate_5_xwqo2h.jpg" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479816/vergiate_19_loob8d.jpg" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479804/vergiate_24_zrdgzg.jpg" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479791/vergiate_30_k8y39o.jpg" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479785/vergiate_33_w3jrke.jpg" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+
+  </div>
+
+</div>
+
+  <!-- Cantiere 2 -->
+<div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition flex flex-col">
+
+  <img src="LINK_CLOUDINARY_ANTEPRIMA" class="w-full h-56 object-cover">
+
+  <div class="p-5 flex flex-col flex-grow">
+    <h2 class="text-lg font-semibold mb-2">Cantiere 1</h2>
+    <p class="text-gray-500 text-sm mb-4">Descrizione lavoro.</p>
+
+    <button onclick="toggleGallery('gallery1')" 
+      class="mt-auto px-5 py-3 bg-black text-white rounded-full text-sm">
+      Vedi lavori
+    </button>
+  </div>
+
+  <!-- GALLERY NASCOSTA -->
+  <div id="gallery1" class="hidden p-5 pt-0 grid grid-cols-2 md:grid-cols-3 gap-4">
+
+    <img src="LINK_FOTO_1" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+    <img src="LINK_FOTO_2" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+    <img src="LINK_FOTO_3" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+    <img src="LINK_FOTO_4" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+    <img src="LINK_FOTO_5" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+
+  </div>
+
+</div>
+
+ <!-- Cantiere 3 -->
+<div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition flex flex-col">
+
+  <img src="LINK_CLOUDINARY_ANTEPRIMA" class="w-full h-56 object-cover">
+
+  <div class="p-5 flex flex-col flex-grow">
+    <h2 class="text-lg font-semibold mb-2">Cantiere 1</h2>
+    <p class="text-gray-500 text-sm mb-4">Descrizione lavoro.</p>
+
+    <button onclick="toggleGallery('gallery1')" 
+      class="mt-auto px-5 py-3 bg-black text-white rounded-full text-sm">
+      Vedi lavori
+    </button>
+  </div>
+
+  <!-- GALLERY NASCOSTA -->
+  <div id="gallery1" class="hidden p-5 pt-0 grid grid-cols-2 md:grid-cols-3 gap-4">
+
+    <img src="LINK_FOTO_1" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+    <img src="LINK_FOTO_2" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+    <img src="LINK_FOTO_3" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+    <img src="LINK_FOTO_4" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+    <img src="LINK_FOTO_5" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+
+  </div>
+
+</div>
     <!-- DUPLICA FINO A 17 -->
     <!-- Per velocità puoi fare copia-incolla -->
 
