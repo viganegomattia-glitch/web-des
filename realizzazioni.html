@@ -72,7 +72,7 @@
 
 </div>
 
-  <!-- Cantiere 2 -->
+  <!-- Cantiere 2 Gerenzano -->
 <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition flex flex-col">
 
   <img src="LINK_CLOUDINARY_ANTEPRIMA" class="w-full h-56 object-cover">
@@ -90,11 +90,11 @@
   <!-- GALLERY NASCOSTA -->
   <div id="gallery1" class="hidden p-5 pt-0 grid grid-cols-2 md:grid-cols-3 gap-4">
 
-    <img src="LINK_FOTO_1" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
-    <img src="LINK_FOTO_2" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
-    <img src="LINK_FOTO_3" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
-    <img src="LINK_FOTO_4" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
-    <img src="LINK_FOTO_5" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479689/gerenzano_8_eiaig1.jpg" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479691/gerenzano_7_dpbne0.jpg" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479676/gerenzano_14_axelvc.jpg" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479695/gerenzano_5_baondj.jpg" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
+    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479691/gerenzano_7_dpbne0.jpg" class="rounded-lg cursor-pointer" onclick="openModal(this.src)">
 
   </div>
 
@@ -180,6 +180,25 @@
   </p>
 
 </footer>
+<script>
+function toggleGallery(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle("hidden");
+}
 
+function openModal(src) {
+  document.getElementById("modal").classList.remove("hidden");
+  document.getElementById("modal").classList.add("flex");
+  document.getElementById("modalImg").src = src;
+}
+
+function closeModal() {
+  document.getElementById("modal").classList.add("hidden");
+  document.getElementById("modal").classList.remove("flex");
+}
+</script>
+ <div id="modal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50" onclick="closeModal()">
+  <img id="modalImg" class="max-w-4xl max-h-[90vh] rounded-lg">
+</div> 
 </body>
 </html>
