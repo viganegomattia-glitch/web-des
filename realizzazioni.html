@@ -28,17 +28,54 @@
     </button>
   </nav>
 
-<!-- HERO -->
-<div class="relative h-64 md:h-80 flex items-center justify-center text-white mb-16">
-  <div 
-    class="absolute inset-0 bg-cover bg-center"
-    style="background-image: url('https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=2070&auto=format&fit=crop');">
+<!-- Hero -->
+<section class="relative flex items-center justify-center text-center py-32 px-4 text-white mt-20 overflow-hidden">
+
+  <!-- Background -->
+  <div class="absolute inset-0">
+    <img 
+      src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478340/seriate_9_xt5olt.jpg"
+      class="w-full h-full object-cover"
+    >
+    <div class="absolute inset-0 bg-orange-600 opacity-70"></div>
   </div>
-  <div class="absolute inset-0 bg-black opacity-60"></div>
-  <h1 class="relative z-10 text-3xl md:text-5xl font-bold text-center px-4">
-    Realizzazioni
-  </h1>
-</div>
+
+  <!-- Contenuto -->
+  <div class="relative z-10 max-w-6xl mx-auto">
+
+    <!-- Titolo -->
+    <h1 class="text-4xl md:text-6xl font-bold mb-6">
+      Carpenteria Metallica su Misura
+    </h1>
+
+    <p class="text-lg mb-12 max-w-2xl mx-auto">
+      Strutture resistenti e lavorazioni professionali per aziende e privati.
+    </p>
+
+    <!-- Cards -->
+    <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+
+      <!-- Sinistra -->
+      <div class="w-full md:w-1/4 bg-white rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479697/gerenzano_4_tfu2kc.jpg" class="w-full h-48 object-cover">
+      </div>
+
+      <!-- Centro (più grande) -->
+      <div class="w-full md:w-2/4 bg-white rounded-2xl overflow-hidden shadow-2xl">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478410/gorgonzola_14_x8if4q.jpg" class="w-full h-72 object-cover">
+      </div>
+
+      <!-- Destra -->
+      <div class="w-full md:w-1/4 bg-white rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479431/saronno_24_tc6vfv.jpg" class="w-full h-48 object-cover">
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
 
 <!-- CONTENUTO -->
 <section class="px-4 md:px-6 pb-20">
