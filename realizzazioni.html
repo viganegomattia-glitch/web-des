@@ -162,6 +162,23 @@ function closeModal() {
   document.getElementById("modal").classList.remove("flex");
 }
 </script>
+  <script>
+function getCategoriaFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("categoria");
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  const categoria = getCategoriaFromURL();
+
+  if (categoria) {
+    const btn = document.querySelector(`[onclick*="${categoria}"]`);
+    if (btn) {
+      filterCards(categoria, btn);
+    }
+  }
+});
+</script>
 
 </body>
 </html>
