@@ -4,335 +4,301 @@
   <meta charset="UTF-8">
   <title>Realizzazioni - M.C.M.A Coperture</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      min-height: 420px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.28);
+      transform: translateY(-3px);
+    }
+    .card-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .card:hover .card-bg {
+      transform: scale(1.05);
+    }
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 55%, rgba(0,0,0,0.05) 100%);
+    }
+    .card-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .gallery-panel {
+      display: none;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+    .gallery-panel.open {
+      display: grid;
+    }
+    .gallery-panel img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 2px solid rgba(255,255,255,0.35);
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .gallery-panel img:hover {
+      transform: scale(1.04);
+      opacity: 0.88;
+    }
+    .btn-gallery {
+      background: rgba(220, 38, 38, 0.9);
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      width: 100%;
+    }
+    .btn-gallery:hover {
+      background: rgba(185, 28, 28, 1);
+    }
+  </style>
 </head>
-
 <body class="bg-white text-gray-900">
 
 <!-- NAVBAR -->
 <nav class="flex justify-between items-center px-6 md:px-8 py-5 border-b bg-white fixed top-0 w-full z-50">
-  <a href="index.html">
-    <img src="logo.jpg" class="h-14 md:h-16">
-  </a>
-
+  <a href="index.html"><img src="logo.jpg" class="h-14 md:h-16"></a>
   <div class="hidden md:flex space-x-6 text-sm text-gray-600">
-    <a href="servizi.html">Servizi</a>
+    <a href="servizi.html" class="hover:text-black">Servizi</a>
     <a href="realizzazioni.html" class="text-black font-semibold">Realizzazioni</a>
+    <a href="index.html" class="hover:text-black">Chi siamo</a>
+    <a href="contatti.html" class="hover:text-black">Contatti</a>
+  </div>
+  <button class="md:hidden text-gray-700" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">☰</button>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="hidden fixed top-20 left-0 w-full bg-white border-b z-40">
+  <div class="flex flex-col text-center py-4 space-y-4 text-gray-700">
+    <a href="servizi.html">Servizi</a>
+    <a href="realizzazioni.html">Realizzazioni</a>
     <a href="index.html">Chi siamo</a>
     <a href="contatti.html">Contatti</a>
   </div>
-</nav>
-   <!-- Desktop Menu -->
-    <div class="hidden md:flex space-x-6 text-sm text-gray-600">
-      <a href="servizi.html" class="hover:text-black">Servizi</a>
-      <a href="realizzazioni.html" class="hover:text-black">Realizzazioni</a>
-      <a href="#about" class="hover:text-black">Chi siamo</a>
-      <a href="contatti.html" class="hover:text-black">Contatti</a>
-    </div>
-
-    <!-- Mobile Button -->
-    <button id="menuBtn" class="md:hidden text-gray-700">
-      ☰
-    </button>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="hidden fixed top-16 left-0 w-full bg-white border-b z-40">
-    <div class="flex flex-col text-center py-4 space-y-4">
-      <a href="servizi.html">Servizi</a>
-      <a href="realizzazioni.html">Realizzazioni</a>
-      <a href="#about">Chi siamo</a>
-      <a href="contatti.html">Contatti</a>
-    </div>
-  </div>
+</div>
 
 <!-- HERO -->
 <section class="relative flex items-center justify-center text-center py-40 px-4 text-white mt-20 overflow-hidden">
-
   <div class="absolute inset-0">
     <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478340/seriate_9_xt5olt.jpg" class="w-full h-full object-cover">
     <div class="absolute inset-0 bg-orange-600 opacity-70"></div>
   </div>
-
   <div class="relative z-10 max-w-6xl mx-auto">
-
-    <h1 class="text-4xl md:text-6xl font-bold mb-6">
-      Realizzazioni
-    </h1>
-
-    <p class="text-lg mb-6">
-      La Nostra Gallery
-    </p>
-
-    <!-- FILTRO -->
-    <div class="flex flex-wrap justify-center gap-4 mb-12">
-
-      <button onclick="filterCards('all', this)" 
-        class="filter-btn bg-white text-black font-semibold px-5 py-2 rounded-full shadow">
-        Tutto
-      </button>
-
-      <button onclick="filterCards('carpenteria', this)" 
-        class="filter-btn border border-white px-5 py-2 rounded-full hover:bg-white hover:text-black">
-        Carpenteria metallica
-      </button>
-
-      <button onclick="filterCards('coperture', this)" 
-        class="filter-btn border border-white px-5 py-2 rounded-full hover:bg-white hover:text-black">
-        Coperture e lattoneria
-      </button>
-
-      <button onclick="filterCards('progettazione', this)" 
-        class="filter-btn border border-white px-5 py-2 rounded-full hover:bg-white hover:text-black">
-        Progettazione e posa
-      </button>
-
+    <h1 class="text-4xl md:text-6xl font-bold mb-6">Realizzazioni</h1>
+    <p class="text-lg mb-10">La Nostra Gallery</p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <button onclick="filterCards('all', this)" class="filter-btn bg-white text-black font-semibold px-5 py-2 rounded-full shadow">Tutto</button>
+      <button onclick="filterCards('carpenteria', this)" class="filter-btn border border-white text-white px-5 py-2 rounded-full hover:bg-white hover:text-black transition">Carpenteria metallica</button>
+      <button onclick="filterCards('coperture', this)" class="filter-btn border border-white text-white px-5 py-2 rounded-full hover:bg-white hover:text-black transition">Coperture e lattoneria</button>
+      <button onclick="filterCards('progettazione', this)" class="filter-btn border border-white text-white px-5 py-2 rounded-full hover:bg-white hover:text-black transition">Progettazione e posa</button>
     </div>
-
   </div>
 </section>
- <div class="w-full max-w-4xl mx-auto h-px bg-red-600 opacity-40 my-12"></div>
+
+<div class="w-full max-w-4xl mx-auto h-px bg-red-600 opacity-40 my-12"></div>
+
 <!-- GRID -->
-<section class="px-4 md:px-6 pt-20 pb-20">
+<section class="px-4 md:px-6 pb-20">
 <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
 
-<!-- CARD COPERTURE -->
-  <!--1 card-->
-<div class="card relative rounded-2xl shadow-lg hover:shadow-2xl transition overflow-hidden min-h-[350px] flex flex-col justify-end text-white" data-category="coperture">
- <div class="absolute inset-0 bg-cover bg-center opacity-70 filter brightness-90"
-     style="background-image: url('https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479802/vergiate_25_lgqt8p.jpg');">
-</div>
-  <div class="absolute inset-0 bg-black opacity-40"></div>
-  <div class="p-5 flex flex-col flex-grow">
-    <h2 class="font-semibold">Vergiate</h2>
-    <button onclick="toggleGallery('gallery1')" class="mt-4 bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition">
-      Visualizza Gallery
-    </button>
-  </div>
-  <div id="gallery1" class="hidden p-5 grid grid-cols-2 gap-4">
-    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479786/vergiate_32_tirvok.jpg" onclick="openModal(this.src)">
-    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479795/vergiate_28_urnvt1.jpg" onclick="openModal(this.src)">
-    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479780/vergiate_35_air6th.jpg" onclick="openModal(this.src)">
-    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479785/vergiate_33_w3jrke.jpg" onclick="openModal(this.src)">
-  </div>
-</div>
-  <!--2 card-->
-  <div class="card relative rounded-2xl shadow-lg hover:shadow-2xl transition overflow-hidden min-h-[350px] flex flex-col justify-end text-white" data-category="coperture">
-  
-<div class="absolute inset-0 bg-cover bg-center opacity-70 filter brightness-90"
-     style="background-image: url('https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479028/solaro_16_w6iddn.jpg');">
-</div>
-    <div class="absolute inset-0 bg-black opacity-40"></div>
-
-  <div class="p-5 flex flex-col flex-grow">
-    <h2 class="font-semibold">Solaro</h2>
-
-    <button onclick="toggleGallery('gallery4')" 
-           class="mt-4 bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition">
-       Visualizza Gallery
-    </button>
+  <!-- CARD 1 – Vergiate coperture -->
+  <div class="card" data-category="coperture">
+    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479802/vergiate_25_lgqt8p.jpg">
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <div>
+        <h2 class="text-white text-xl font-bold drop-shadow">Vergiate</h2>
+        <p class="text-gray-300 text-sm">Coperture e lattoneria</p>
+      </div>
+      <div class="gallery-panel" id="gallery1">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479786/vergiate_32_tirvok.jpg" onclick="openModal(this.src); event.stopPropagation()">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479795/vergiate_28_urnvt1.jpg" onclick="openModal(this.src); event.stopPropagation()">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479780/vergiate_35_air6th.jpg" onclick="openModal(this.src); event.stopPropagation()">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479785/vergiate_33_w3jrke.jpg" onclick="openModal(this.src); event.stopPropagation()">
+      </div>
+      <button class="btn-gallery" onclick="toggleGallery('gallery1'); event.stopPropagation()">Visualizza Gallery</button>
+    </div>
   </div>
 
-  <div id="gallery4" class="hidden p-5 grid grid-cols-2 gap-4">
-    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479035/solaro_12_ggy2ow.jpg" onclick="openModal(this.src)">
-    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479033/solaro_13_yd0wtj.jpg" onclick="openModal(this.src)">
-    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479022/solaro_19_y51pqw.jpg" onclick="openModal(this.src)">
-    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479044/solaro_7_jaelwu.jpg" onclick="openModal(this.src)">
+  <!-- CARD 2 – Solaro coperture -->
+  <div class="card" data-category="coperture">
+    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479028/solaro_16_w6iddn.jpg">
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <div>
+        <h2 class="text-white text-xl font-bold drop-shadow">Solaro</h2>
+        <p class="text-gray-300 text-sm">Coperture e lattoneria</p>
+      </div>
+      <div class="gallery-panel" id="gallery4">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479035/solaro_12_ggy2ow.jpg" onclick="openModal(this.src); event.stopPropagation()">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479033/solaro_13_yd0wtj.jpg" onclick="openModal(this.src); event.stopPropagation()">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479022/solaro_19_y51pqw.jpg" onclick="openModal(this.src); event.stopPropagation()">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479044/solaro_7_jaelwu.jpg" onclick="openModal(this.src); event.stopPropagation()">
+      </div>
+      <button class="btn-gallery" onclick="toggleGallery('gallery4'); event.stopPropagation()">Visualizza Gallery</button>
+    </div>
   </div>
 
-</div>
-<!--3 card-->
-  <div class="card relative rounded-2xl shadow-lg hover:shadow-2xl transition overflow-hidden min-h-[350px] flex flex-col justify-end text-white" data-category="coperture">
-  
-  <div class="absolute inset-0 bg-cover bg-center opacity-70 filter brightness-90"
-     style="background-image: url('https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479700/gerenzano_3_ncvfso.jpg');">
-</div>
-    <div class="absolute inset-0 bg-black opacity-40"></div>
-
-  <div class="p-5 flex flex-col flex-grow">
-    <h2 class="font-semibold">Gerenzano</h2>
-
-    <button onclick="toggleGallery('gallery5')" 
-            class="mt-4 bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition">
-       Visualizza Gallery
-    </button>
+  <!-- CARD 3 – Gerenzano coperture -->
+  <div class="card" data-category="coperture">
+    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479700/gerenzano_3_ncvfso.jpg">
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <div>
+        <h2 class="text-white text-xl font-bold drop-shadow">Gerenzano</h2>
+        <p class="text-gray-300 text-sm">Coperture e lattoneria</p>
+      </div>
+      <div class="gallery-panel" id="gallery5">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479691/gerenzano_7_dpbne0.jpg" onclick="openModal(this.src); event.stopPropagation()">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479692/gerenzano_6_lusctp.jpg" onclick="openModal(this.src); event.stopPropagation()">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479689/gerenzano_8_eiaig1.jpg" onclick="openModal(this.src); event.stopPropagation()">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479697/gerenzano_4_tfu2kc.jpg" onclick="openModal(this.src); event.stopPropagation()">
+      </div>
+      <button class="btn-gallery" onclick="toggleGallery('gallery5'); event.stopPropagation()">Visualizza Gallery</button>
+    </div>
   </div>
 
-  <div id="gallery5" class="hidden p-5 grid grid-cols-2 gap-4">
-    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479691/gerenzano_7_dpbne0.jpg" onclick="openModal(this.src)">
-    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479692/gerenzano_6_lusctp.jpg" onclick="openModal(this.src)">
-    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479689/gerenzano_8_eiaig1.jpg" onclick="openModal(this.src)">
-    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479697/gerenzano_4_tfu2kc.jpg" onclick="openModal(this.src)">
-
+  <!-- CARD 4 – Saronno coperture -->
+  <div class="card" data-category="coperture">
+    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479431/saronno_24_tc6vfv.jpg">
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <div>
+        <h2 class="text-white text-xl font-bold drop-shadow">Saronno</h2>
+        <p class="text-gray-300 text-sm">Coperture e lattoneria</p>
+      </div>
+      <div class="gallery-panel" id="gallery6">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479457/saronno_11_froivg.jpg" onclick="openModal(this.src); event.stopPropagation()">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479413/saronno_33_vh6jbl.jpg" onclick="openModal(this.src); event.stopPropagation()">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479402/saronno_39_cdsbl0.jpg" onclick="openModal(this.src); event.stopPropagation()">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479407/saronno_36_v7vps3.jpg" onclick="openModal(this.src); event.stopPropagation()">
+      </div>
+      <button class="btn-gallery" onclick="toggleGallery('gallery6'); event.stopPropagation()">Visualizza Gallery</button>
+    </div>
   </div>
 
-</div>
-  <!--4 card-->
-  <div class="card relative rounded-2xl shadow-lg hover:shadow-2xl transition overflow-hidden min-h-[350px] flex flex-col justify-end text-white" data-category="coperture">
-  
-  <div class="absolute inset-0 bg-cover bg-center opacity-70 filter brightness-90"
-     style="background-image: url('https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479431/saronno_24_tc6vfv.jpg');">
-</div>
-    <div class="absolute inset-0 bg-black opacity-40"></div>
-
-  <div class="p-5 flex flex-col flex-grow">
-    <h2 class="font-semibold">Saronno</h2>
-
-    <button onclick="toggleGallery('gallery6')" 
-            class="mt-4 bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition">
-       Visualizza Gallery
-    </button>
+  <!-- CARD 5 – Vergiate carpenteria -->
+  <div class="card" data-category="carpenteria">
+    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479847/vergiate_5_xwqo2h.jpg">
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <div>
+        <h2 class="text-white text-xl font-bold drop-shadow">Vergiate</h2>
+        <p class="text-gray-300 text-sm">Carpenteria metallica</p>
+      </div>
+      <div class="gallery-panel" id="gallery2">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479847/vergiate_5_xwqo2h.jpg" onclick="openModal(this.src); event.stopPropagation()">
+      </div>
+      <button class="btn-gallery" onclick="toggleGallery('gallery2'); event.stopPropagation()">Visualizza Gallery</button>
+    </div>
   </div>
 
-  <div id="gallery6" class="hidden p-5 grid grid-cols-2 gap-4">
-    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479457/saronno_11_froivg.jpg" onclick="openModal(this.src)">
-    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479413/saronno_33_vh6jbl.jpg" onclick="openModal(this.src)">
-    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479402/saronno_39_cdsbl0.jpg" onclick="openModal(this.src)">
-    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479407/saronno_36_v7vps3.jpg" onclick="openModal(this.src)">
+  <!-- CARD 6 – Milano progettazione -->
+  <div class="card" data-category="progettazione">
+    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479574/duomo_6_n4nzyt.jpg">
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <div>
+        <h2 class="text-white text-xl font-bold drop-shadow">Milano</h2>
+        <p class="text-gray-300 text-sm">Progettazione e posa</p>
+      </div>
+      <div class="gallery-panel" id="gallery3">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479574/duomo_6_n4nzyt.jpg" onclick="openModal(this.src); event.stopPropagation()">
+      </div>
+      <button class="btn-gallery" onclick="toggleGallery('gallery3'); event.stopPropagation()">Visualizza Gallery</button>
+    </div>
   </div>
-
-</div>
-
-<!-- CARD CARPENTERIA -->
-<div class="card relative rounded-2xl shadow-lg hover:shadow-2xl transition overflow-hidden min-h-[350px] flex flex-col justify-end text-white" data-category="carpenteria">
-<div class="absolute inset-0 bg-cover bg-center opacity-70 filter brightness-90"
-     style="background-image: url('https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479847/vergiate_5_xwqo2h.jpg');">
-</div> 
-  <div class="absolute inset-0 bg-black opacity-40"></div>
-  <div class="p-5 flex flex-col flex-grow">
-    <h2 class="font-semibold">Vergiate</h2>
-    <button onclick="toggleGallery('gallery2')" class="mt-4 bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition">
-       Visualizza Gallery
-    </button>
-  </div>
-  <div id="gallery2" class="hidden p-5 grid grid-cols-2 gap-4">
-    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479847/vergiate_5_xwqo2h.jpg" onclick="openModal(this.src)">
-  </div>
-</div>
-
-<!-- CARD PROGETTAZIONE -->
-<div class="card relative rounded-2xl shadow-lg hover:shadow-2xl transition overflow-hidden min-h-[350px] flex flex-col justify-end text-white" data-category="progettazione">
-<div class="absolute inset-0 bg-cover bg-center opacity-70 filter brightness-90"
-     style="background-image: url('https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479574/duomo_6_n4nzyt.jpg');">
-</div>
-  <div class="absolute inset-0 bg-black opacity-40"></div>
-  <div class="p-5 flex flex-col flex-grow">
-    <h2 class="font-semibold">Milano</h2>
-    <button onclick="toggleGallery('gallery3')" class="mt-4 bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition">
-       Visualizza Gallery
-    </button>
-  </div>
-  <div id="gallery3" class="hidden p-5 grid grid-cols-2 gap-4">
-    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479574/duomo_6_n4nzyt.jpg" onclick="openModal(this.src)">
-  </div>
-</div>
 
 </div>
 </section>
- 
+
 <!-- MODAL -->
-<div id="modal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50" onclick="closeModal()">
-  <img id="modalImg" class="max-w-4xl max-h-[90vh] rounded-lg">
+<div id="modal" class="fixed inset-0 bg-black bg-opacity-85 hidden items-center justify-center z-50 p-4" onclick="closeModal()">
+  <img id="modalImg" class="max-w-full rounded-xl shadow-2xl" style="max-height:90vh;">
 </div>
- <div class="w-full max-w-4xl mx-auto h-px bg-red-600 opacity-40 my-12"></div>
+
+<div class="w-full max-w-4xl mx-auto h-px bg-red-600 opacity-40 my-12"></div>
+
 <!-- Footer -->
 <footer class="py-10 text-center text-sm text-gray-500 border-t space-y-2">
-
   <p>P.IVA: 13216840860</p>
-
-  <p>
-    Indirizzo: 
-    <a 
-      href="https://www.google.com/maps/search/?api=1&query=Via+Pasino+Sforza+61+San+Colombano+al+Lambro" 
-      target="_blank"
-      class="hover:underline"
-    >
-      Via Pasino Sforza 61, San Colombano al Lambro
-    </a>
-  </p>
-
-  <p>
-    Telefono: 
-    <a href="tel:+393283480607" class="text-blue-500 hover:underline">
-      +39 328 3480607
-    </a>
-  </p>
-
-  <p>
-    Email: 
-    <a href="mailto:mcma.coperture@hotmail.com" class="text-blue-500 hover:underline">
-      mcma.coperture@hotmail.com
-    </a>
-  </p>
-
-  <p>
-    Instagram: 
-    <a 
-      href="https://www.instagram.com/m.c.m.a.coperture" 
-      target="_blank"
-      class="text-blue-500 hover:underline"
-    >
-      @m.c.m.a.coperture
-    </a>
-  </p>
-
-  <p class="text-gray-400 mt-4">
-    © 2026 M.C.M.A Coperture — Tutti i diritti riservati
-  </p>
-
+  <p>Indirizzo: <a href="https://www.google.com/maps/search/?api=1&query=Via+Pasino+Sforza+61+San+Colombano+al+Lambro" target="_blank" class="hover:underline">Via Pasino Sforza 61, San Colombano al Lambro</a></p>
+  <p>Telefono: <a href="tel:+393283480607" class="text-blue-500 hover:underline">+39 328 3480607</a></p>
+  <p>Email: <a href="mailto:mcma.coperture@hotmail.com" class="text-blue-500 hover:underline">mcma.coperture@hotmail.com</a></p>
+  <p>Instagram: <a href="https://www.instagram.com/m.c.m.a.coperture" target="_blank" class="text-blue-500 hover:underline">@m.c.m.a.coperture</a></p>
+  <p class="text-gray-400 mt-4">© 2026 M.C.M.A Coperture — Tutti i diritti riservati</p>
 </footer>
 
 <script>
-function filterCards(category, btn) {
-  const cards = document.querySelectorAll(".card");
-
-  cards.forEach(card => {
-    const cat = card.getAttribute("data-category");
-    card.style.display = (category === "all" || cat === category) ? "flex" : "none";
-  });
-
-  document.querySelectorAll(".filter-btn").forEach(b => {
-    b.classList.remove("bg-white", "text-black", "font-semibold");
-    b.classList.add("border", "border-white", "text-white");
-  });
-
-  btn.classList.add("bg-white", "text-black", "font-semibold");
-}
-
-function toggleGallery(id) {
-  document.querySelectorAll('[id^="gallery"]').forEach(el => {
-    if (el.id !== id) el.classList.add("hidden");
-  });
-  document.getElementById(id).classList.toggle("hidden");
-}
-
-function openModal(src) {
-  document.getElementById("modal").classList.remove("hidden");
-  document.getElementById("modal").classList.add("flex");
-  document.getElementById("modalImg").src = src;
-}
-
-function closeModal() {
-  document.getElementById("modal").classList.add("hidden");
-  document.getElementById("modal").classList.remove("flex");
-}
-</script>
-  <script>
-function getCategoriaFromURL() {
-  const params = new URLSearchParams(window.location.search);
-  return params.get("categoria");
-}
-
-window.addEventListener("DOMContentLoaded", () => {
-  const categoria = getCategoriaFromURL();
-
-  if (categoria) {
-    const btn = document.querySelector(`[onclick*="${categoria}"]`);
-    if (btn) {
-      filterCards(categoria, btn);
-    }
+  function filterCards(category, btn) {
+    document.querySelectorAll(".card").forEach(card => {
+      const cat = card.getAttribute("data-category");
+      card.style.display = (category === "all" || cat === category) ? "block" : "none";
+    });
+    document.querySelectorAll(".filter-btn").forEach(b => {
+      b.classList.remove("bg-white", "text-black", "font-semibold");
+      b.classList.add("border", "border-white", "text-white");
+    });
+    btn.classList.remove("border", "border-white", "text-white");
+    btn.classList.add("bg-white", "text-black", "font-semibold");
   }
-});
-</script>
 
+  function toggleGallery(id) {
+    const target = document.getElementById(id);
+    const isOpen = target.classList.contains("open");
+    document.querySelectorAll(".gallery-panel").forEach(el => el.classList.remove("open"));
+    if (!isOpen) target.classList.add("open");
+  }
+
+  function openModal(src) {
+    document.getElementById("modalImg").src = src;
+    const modal = document.getElementById("modal");
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+  }
+
+  function closeModal() {
+    const modal = document.getElementById("modal");
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const categoria = new URLSearchParams(window.location.search).get("categoria");
+    if (categoria) {
+      const btn = document.querySelector(`[onclick*="'${categoria}'"]`);
+      if (btn) filterCards(categoria, btn);
+    }
+  });
+</script>
 </body>
 </html>
