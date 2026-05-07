@@ -4,176 +4,98 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/jpg" href="logo.jpg">
-
-  <!-- SEO -->
   <title>M.C.M.A Coperture | Carpenteria Metallica e Coperture</title>
   <meta name="description" content="M.C.M.A Coperture - Carpenteria metallica e coperture industriali. Realizzazioni su misura, qualità e affidabilità.">
-  <meta name="keywords" content="carpenteria metallica, coperture, tetti, strutture metalliche, Milano">
-  <meta name="author" content="M.C.M.A Coperture">
-
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
   <style>
     body { font-family: 'Inter', sans-serif; }
   </style>
 </head>
-
 <body class="bg-white text-gray-900">
 
-  <!-- Navbar -->
-  <nav class="flex justify-between items-center px-6 md:px-8 py-5 border-b bg-white fixed top-0 w-full z-50">
-    <a href="index.html" class="flex items-center">
-     <img src="logo.jpg" alt="M.C.M.A Coperture" class="h-14 md:h-16 object-contain">
-    </a>
-
-    <!-- Desktop Menu -->
-    <div class="hidden md:flex space-x-6 text-sm text-gray-600">
-      <a href="servizi.html" class="hover:text-black">Servizi</a>
-      <a href="realizzazioni.html" class="hover:text-black">Realizzazioni</a>
-      <a href="#about" class="hover:text-black">Chi siamo</a>
-      <a href="contatti.html" class="hover:text-black">Contatti</a>
-    </div>
-
-    <!-- Mobile Button -->
-    <button id="menuBtn" class="md:hidden text-gray-700">
-      ☰
-    </button>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="hidden fixed top-16 left-0 w-full bg-white border-b z-40">
-    <div class="flex flex-col text-center py-4 space-y-4">
-      <a href="servizi.html">Servizi</a>
-      <a href="realizzazioni.html">Realizzazioni</a>
-      <a href="#about">Chi siamo</a>
-      <a href="contatti.html">Contatti</a>
-    </div>
+<!-- NAVBAR -->
+<nav class="flex justify-between items-center px-4 py-4 border-b bg-white fixed top-0 w-full z-50 shadow-sm">
+  <a href="index.html"><img src="logo.jpg" alt="M.C.M.A Coperture" class="h-12 md:h-16 object-contain"></a>
+  <div class="hidden md:flex space-x-6 text-sm text-gray-600">
+    <a href="servizi.html" class="hover:text-black">Servizi</a>
+    <a href="realizzazioni.html" class="hover:text-black">Realizzazioni</a>
+    <a href="#about" class="hover:text-black">Chi siamo</a>
+    <a href="contatti.html" class="hover:text-black">Contatti</a>
   </div>
+  <button id="menuBtn" class="md:hidden p-2 text-gray-700 text-2xl leading-none">☰</button>
+</nav>
+<div id="mobileMenu" class="hidden fixed top-16 left-0 w-full bg-white border-b z-40 shadow-md">
+  <div class="flex flex-col text-center py-4 space-y-4 text-gray-700 text-base font-medium">
+    <a href="servizi.html" class="py-1 hover:text-red-600">Servizi</a>
+    <a href="realizzazioni.html" class="py-1 hover:text-red-600">Realizzazioni</a>
+    <a href="#about" class="py-1 hover:text-red-600">Chi siamo</a>
+    <a href="contatti.html" class="py-1 hover:text-red-600">Contatti</a>
+  </div>
+</div>
 
-  <!-- Hero -->
-<section class="relative flex items-center justify-center text-center py-40 px-4 text-white mt-20 overflow-hidden">
-
-  <!-- Background -->
+<!-- HERO -->
+<section class="relative flex items-center justify-center text-center py-20 md:py-40 px-4 text-white mt-16 overflow-hidden">
   <div class="absolute inset-0">
-    <img 
-      src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478340/seriate_9_xt5olt.jpg"
-      class="w-full h-full object-cover"
-    >
+    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478340/seriate_9_xt5olt.jpg" class="w-full h-full object-cover">
     <div class="absolute inset-0 bg-orange-600 opacity-70"></div>
   </div>
-
-  <!-- Contenuto -->
-  <div class="relative z-10 max-w-6xl mx-auto">
-
-    <!-- Titolo -->
-    <h1 class="text-4xl md:text-6xl font-bold mb-6">
-      Carpenteria Metallica su Misura
-    </h1>
-
-    <p class="text-lg mb-12 max-w-2xl mx-auto">
-      Strutture resistenti e lavorazioni professionali per aziende e privati.
-    </p>
-
-    <!-- Cards -->
-    <div class="flex flex-col md:flex-row items-center justify-center gap-6">
-
-      <!-- Sinistra -->
-      <div class="w-full md:w-1/4 bg-white rounded-2xl overflow-hidden shadow-lg">
+  <div class="relative z-10 max-w-6xl mx-auto w-full">
+    <h1 class="text-3xl md:text-6xl font-bold mb-4 md:mb-6">Carpenteria Metallica su Misura</h1>
+    <p class="text-base md:text-lg mb-8 md:mb-12 max-w-2xl mx-auto">Strutture resistenti e lavorazioni professionali per aziende e privati.</p>
+    <!-- Immagini hero: solo la centrale su mobile -->
+    <div class="flex items-center justify-center gap-4">
+      <div class="hidden md:block w-1/4 bg-white rounded-2xl overflow-hidden shadow-lg">
         <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479697/gerenzano_4_tfu2kc.jpg" class="w-full h-48 object-cover">
       </div>
-
-      <!-- Centro (più grande) -->
       <div class="w-full md:w-2/4 bg-white rounded-2xl overflow-hidden shadow-2xl">
-        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478410/gorgonzola_14_x8if4q.jpg" class="w-full h-72 object-cover">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478410/gorgonzola_14_x8if4q.jpg" class="w-full h-52 md:h-72 object-cover">
       </div>
-
-      <!-- Destra -->
-      <div class="w-full md:w-1/4 bg-white rounded-2xl overflow-hidden shadow-lg">
+      <div class="hidden md:block w-1/4 bg-white rounded-2xl overflow-hidden shadow-lg">
         <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479431/saronno_24_tc6vfv.jpg" class="w-full h-48 object-cover">
       </div>
-
     </div>
-
   </div>
-
 </section>
-  <div class="w-full max-w-4xl mx-auto h-px bg-red-600 opacity-40 my-12"></div>
-  <!-- Chi siamo -->
-  <section id="about" class="py-20 px-6 text-center">
-    <h2 class="text-3xl font-semibold mb-6">Chi siamo</h2>
-    <p class="max-w-2xl mx-auto text-gray-500 text-lg">
-      M.C.M.A Coperture è un’azienda specializzata in carpenteria metallica e coperture industriali.
-      Offriamo soluzioni su misura per aziende e privati, garantendo qualità, sicurezza e precisione in ogni progetto.
-    </p>
-  </section>
-<div class="w-full max-w-4xl mx-auto h-px bg-red-600 opacity-40 my-12"></div>
-  <!-- Fiducia -->
-  <section class="py-16 bg-gray-50 text-center">
-    <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-6 text-lg font-medium">
-      <div>✔ Preventivi Gratuiti</div>
-      <div>✔ Materiali Certificati</div>
-      <div>✔ Lavori su Misura</div>
-    </div>
-  </section>
-<div class="w-full max-w-4xl mx-auto h-px bg-red-600 opacity-40 my-12"></div>
 
- <!-- Footer -->
-<footer class="py-10 text-center text-sm text-gray-500 border-t space-y-2">
+<div class="w-full max-w-4xl mx-auto h-px bg-red-600 opacity-40 my-10 md:my-12"></div>
 
+<!-- CHI SIAMO -->
+<section id="about" class="py-12 md:py-20 px-6 text-center">
+  <h2 class="text-2xl md:text-3xl font-semibold mb-4 md:mb-6">Chi siamo</h2>
+  <p class="max-w-2xl mx-auto text-gray-500 text-base md:text-lg">
+    M.C.M.A Coperture è un'azienda specializzata in carpenteria metallica e coperture industriali.
+    Offriamo soluzioni su misura per aziende e privati, garantendo qualità, sicurezza e precisione in ogni progetto.
+  </p>
+</section>
+
+<div class="w-full max-w-4xl mx-auto h-px bg-red-600 opacity-40 my-10 md:my-12"></div>
+
+<!-- FIDUCIA -->
+<section class="py-10 md:py-16 bg-gray-50 text-center px-4">
+  <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 text-base md:text-lg font-medium">
+    <div class="py-3">✔ Preventivi Gratuiti</div>
+    <div class="py-3">✔ Materiali Certificati</div>
+    <div class="py-3">✔ Lavori su Misura</div>
+  </div>
+</section>
+
+<div class="w-full max-w-4xl mx-auto h-px bg-red-600 opacity-40 my-10 md:my-12"></div>
+
+<!-- FOOTER -->
+<footer class="py-10 text-center text-sm text-gray-500 border-t space-y-2 px-4">
   <p>P.IVA: 13216840860</p>
-
-  <p>
-    Indirizzo: 
-    <a 
-      href="https://www.google.com/maps/search/?api=1&query=Via+Pasino+Sforza+61+San+Colombano+al+Lambro" 
-      target="_blank"
-      class="hover:underline"
-    >
-      Via Pasino Sforza 61, San Colombano al Lambro
-    </a>
-  </p>
-
-  <p>
-    Telefono: 
-    <a href="tel:+393283480607" class="text-blue-500 hover:underline">
-      +39 328 3480607
-    </a>
-  </p>
-
-  <p>
-    Email: 
-    <a href="mailto:mcma.coperture@hotmail.com" class="text-blue-500 hover:underline">
-      mcma.coperture@hotmail.com
-    </a>
-  </p>
-
-  <p>
-    Instagram: 
-    <a 
-      href="https://www.instagram.com/m.c.m.a.coperture" 
-      target="_blank"
-      class="text-blue-500 hover:underline"
-    >
-      @m.c.m.a.coperture
-    </a>
-  </p>
-
-  <p class="text-gray-400 mt-4">
-    © 2026 M.C.M.A Coperture — Tutti i diritti riservati
-  </p>
-
+  <p>Indirizzo: <a href="https://www.google.com/maps/search/?api=1&query=Via+Pasino+Sforza+61+San+Colombano+al+Lambro" target="_blank" class="hover:underline">Via Pasino Sforza 61, San Colombano al Lambro</a></p>
+  <p>Telefono: <a href="tel:+393283480607" class="text-blue-500 hover:underline">+39 328 3480607</a></p>
+  <p>Email: <a href="mailto:mcma.coperture@hotmail.com" class="text-blue-500 hover:underline">mcma.coperture@hotmail.com</a></p>
+  <p>Instagram: <a href="https://www.instagram.com/m.c.m.a.coperture" target="_blank" class="text-blue-500 hover:underline">@m.c.m.a.coperture</a></p>
+  <p class="text-gray-400 mt-4">© 2026 M.C.M.A Coperture — Tutti i diritti riservati</p>
 </footer>
 
-  <!-- Script Mobile Menu -->
-  <script>
-    const btn = document.getElementById("menuBtn");
-    const menu = document.getElementById("mobileMenu");
-
-    btn.addEventListener("click", () => {
-      menu.classList.toggle("hidden");
-    });
-  </script>
-
+<script>
+  document.getElementById("menuBtn").addEventListener("click", () => {
+    document.getElementById("mobileMenu").classList.toggle("hidden");
+  });
+</script>
 </body>
 </html>
