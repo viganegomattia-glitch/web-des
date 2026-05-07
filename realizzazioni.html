@@ -2,6 +2,7 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Realizzazioni - M.C.M.A Coperture</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
@@ -9,84 +10,89 @@
       position: relative;
       border-radius: 16px;
       overflow: hidden;
-      min-height: 420px;
+      min-height: 280px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      transition: box-shadow 0.3s, transform 0.3s;
+      cursor: pointer;
     }
-    .card:hover {
-      box-shadow: 0 8px 32px rgba(0,0,0,0.28);
-      transform: translateY(-3px);
-    }
+    .card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.3); transform: translateY(-4px); }
     .card-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; transition: transform 0.5s;
     }
-    .card:hover .card-bg {
-      transform: scale(1.05);
-    }
+    .card:hover .card-bg { transform: scale(1.06); }
     .card-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 55%, rgba(0,0,0,0.05) 100%);
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 60%);
+      transition: background 0.3s;
+    }
+    .card:hover .card-overlay {
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.25) 60%);
     }
     .card-content {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 20px;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 20px; z-index: 2;
     }
-    .gallery-panel {
-      display: none;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px;
-    }
-    .gallery-panel.open {
-      display: grid;
-    }
-    .gallery-panel img {
-      width: 100%;
-      aspect-ratio: 1;
-      object-fit: cover;
-      border-radius: 8px;
-      cursor: pointer;
-      border: 2px solid rgba(255,255,255,0.35);
-      transition: transform 0.2s, opacity 0.2s;
-    }
-    .gallery-panel img:hover {
-      transform: scale(1.04);
-      opacity: 0.88;
-    }
-    .btn-gallery {
-      background: rgba(220, 38, 38, 0.9);
-      color: white;
-      border: none;
-      padding: 10px 24px;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
+    .btn-vedi {
+      display: inline-block;
+      background: rgba(220,38,38,0.9);
+      color: white; font-size: 0.85rem; font-weight: 600;
+      padding: 8px 20px; border-radius: 999px;
       transition: background 0.2s;
-      width: 100%;
     }
-    .btn-gallery:hover {
-      background: rgba(185, 28, 28, 1);
+    .card:hover .btn-vedi {
+      background: rgba(185,28,28,1);
     }
+
+    /* LIGHTBOX */
+    #lightbox {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.95); z-index: 100;
+      flex-direction: column; align-items: center; justify-content: center;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox-img {
+      max-width: 90vw; max-height: 80vh;
+      object-fit: contain; border-radius: 10px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.6);
+      transition: opacity 0.2s;
+    }
+    #lightbox-title {
+      color: white; font-size: 1.1rem; font-weight: 700;
+      margin-bottom: 12px; letter-spacing: 0.03em;
+    }
+    #lightbox-counter {
+      color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 10px;
+    }
+    .lb-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.12); border: none;
+      color: white; font-size: 2rem; width: 52px; height: 52px;
+      border-radius: 50%; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .lb-btn:hover { background: rgba(220,38,38,0.8); }
+    #lb-prev { left: 16px; }
+    @media (max-width: 640px) {
+      #lb-prev { left: auto; bottom: 24px; top: auto; transform: none; left: calc(50% - 64px); }
+      #lb-next { right: auto; bottom: 24px; top: auto; transform: none; left: calc(50% + 12px); }
+      #lightbox-img { max-height: 70vh; }
+    }
+    #lb-next { right: 16px; }
+    #lb-close {
+      position: absolute; top: 16px; right: 20px;
+      background: none; border: none; color: white;
+      font-size: 2rem; cursor: pointer; opacity: 0.7;
+    }
+    #lb-close:hover { opacity: 1; }
   </style>
 </head>
 <body class="bg-white text-gray-900">
 
 <!-- NAVBAR -->
-<nav class="flex justify-between items-center px-6 md:px-8 py-5 border-b bg-white fixed top-0 w-full z-50">
-  <a href="index.html"><img src="logo.jpg" class="h-14 md:h-16"></a>
+<nav class="flex justify-between items-center px-4 py-4 border-b bg-white fixed top-0 w-full z-50 shadow-sm">
+  <a href="index.html"><img src="logo.jpg" class="h-12 md:h-16 object-contain"></a>
   <div class="hidden md:flex space-x-6 text-sm text-gray-600">
     <a href="servizi.html" class="hover:text-black">Servizi</a>
     <a href="realizzazioni.html" class="text-black font-semibold">Realizzazioni</a>
@@ -96,9 +102,8 @@
   <button class="md:hidden text-gray-700" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">☰</button>
 </nav>
 
-<!-- Mobile Menu -->
-<div id="mobileMenu" class="hidden fixed top-20 left-0 w-full bg-white border-b z-40">
-  <div class="flex flex-col text-center py-4 space-y-4 text-gray-700">
+<div id="mobileMenu" class="hidden fixed top-16 left-0 w-full bg-white border-b z-40 shadow-md">
+  <div class="flex flex-col text-center py-4 space-y-4 text-gray-700 text-base font-medium">
     <a href="servizi.html">Servizi</a>
     <a href="realizzazioni.html">Realizzazioni</a>
     <a href="index.html">Chi siamo</a>
@@ -107,19 +112,20 @@
 </div>
 
 <!-- HERO -->
-<section class="relative flex items-center justify-center text-center py-40 px-4 text-white mt-20 overflow-hidden">
+<section class="relative flex items-center justify-center text-center py-20 md:py-40 px-4 text-white mt-16 overflow-hidden">
   <div class="absolute inset-0">
     <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478340/seriate_9_xt5olt.jpg" class="w-full h-full object-cover">
     <div class="absolute inset-0 bg-orange-600 opacity-70"></div>
   </div>
   <div class="relative z-10 max-w-6xl mx-auto">
-    <h1 class="text-4xl md:text-6xl font-bold mb-6">Realizzazioni</h1>
-    <p class="text-lg mb-10">La Nostra Gallery</p>
-    <div class="flex flex-wrap justify-center gap-4">
-      <button onclick="filterCards('all', this)" class="filter-btn bg-white text-black font-semibold px-5 py-2 rounded-full shadow">Tutto</button>
-      <button onclick="filterCards('carpenteria', this)" class="filter-btn border border-white text-white px-5 py-2 rounded-full hover:bg-white hover:text-black transition">Carpenteria metallica</button>
-      <button onclick="filterCards('coperture', this)" class="filter-btn border border-white text-white px-5 py-2 rounded-full hover:bg-white hover:text-black transition">Coperture e lattoneria</button>
-      <button onclick="filterCards('progettazione', this)" class="filter-btn border border-white text-white px-5 py-2 rounded-full hover:bg-white hover:text-black transition">Progettazione e posa</button>
+    <h1 class="text-3xl md:text-6xl font-bold mb-4 md:mb-6">Realizzazioni</h1>
+    <p class="text-base md:text-lg mb-6 md:mb-10">La Nostra Gallery</p>
+    <div class="flex flex-wrap justify-center gap-2 md:gap-4">
+      <button onclick="filterCards('all', this)" class="filter-btn bg-white text-black font-semibold px-4 py-2 rounded-full shadow text-sm">Tutto</button>
+      <button onclick="filterCards('carpenteria', this)" class="filter-btn border border-white text-white px-4 py-2 rounded-full hover:bg-white hover:text-black transition text-sm">Carpenteria metallica</button>
+      <button onclick="filterCards('coperture', this)" class="filter-btn border border-white text-white px-4 py-2 rounded-full hover:bg-white hover:text-black transition text-sm">Coperture e lattoneria</button>
+      <button onclick="filterCards('progettazione', this)" class="filter-btn border border-white text-white px-4 py-2 rounded-full hover:bg-white hover:text-black transition text-sm">Progettazione e posa</button>
+      <button onclick="filterCards('pareti', this)" class="filter-btn border border-white text-white px-4 py-2 rounded-full hover:bg-white hover:text-black transition text-sm">Montaggio pareti</button>
     </div>
   </div>
 </section>
@@ -127,128 +133,180 @@
 <div class="w-full max-w-4xl mx-auto h-px bg-red-600 opacity-40 my-12"></div>
 
 <!-- GRID -->
-<section class="px-4 md:px-6 pb-20">
-<div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-
-  <!-- CARD 1 – Vergiate coperture -->
-  <div class="card" data-category="coperture">
-    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479802/vergiate_25_lgqt8p.jpg">
+<section class="px-4 md:px-6 py-6 pb-10 md:pb-20">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+  <div class="card" data-category="carpenteria" onclick="openGallery('gallery1', 'Castiglione Olona')">
+    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478732/castiglione_1_hgrko2.jpg">
     <div class="card-overlay"></div>
     <div class="card-content">
-      <div>
-        <h2 class="text-white text-xl font-bold drop-shadow">Vergiate</h2>
-        <p class="text-gray-300 text-sm">Coperture e lattoneria</p>
-      </div>
-      <div class="gallery-panel" id="gallery1">
-        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479786/vergiate_32_tirvok.jpg" onclick="openModal(this.src); event.stopPropagation()">
-        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479795/vergiate_28_urnvt1.jpg" onclick="openModal(this.src); event.stopPropagation()">
-        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479780/vergiate_35_air6th.jpg" onclick="openModal(this.src); event.stopPropagation()">
-        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479785/vergiate_33_w3jrke.jpg" onclick="openModal(this.src); event.stopPropagation()">
-      </div>
-      <button class="btn-gallery" onclick="toggleGallery('gallery1'); event.stopPropagation()">Visualizza Gallery</button>
+      <h2 class="text-white text-xl font-bold drop-shadow">Castiglione Olona</h2>
+      <p class="text-gray-300 text-sm mb-2">Carpenteria metallica</p>
+      <span class="btn-vedi">Vedi Gallery</span>
+    </div>
+  </div>
+  <div class="card" data-category="carpenteria" onclick="openGallery('gallery2', 'Ceriano Laghetto')">
+    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478920/ceriano_1_gblrxz.jpg">
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <h2 class="text-white text-xl font-bold drop-shadow">Ceriano Laghetto</h2>
+      <p class="text-gray-300 text-sm mb-2">Carpenteria metallica</p>
+      <span class="btn-vedi">Vedi Gallery</span>
+    </div>
+  </div>
+  <div class="card" data-category="carpenteria" onclick="openGallery('gallery3', 'Gorgonzola')">
+    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478423/gorgonzola_0_qk1adu.jpg">
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <h2 class="text-white text-xl font-bold drop-shadow">Gorgonzola</h2>
+      <p class="text-gray-300 text-sm mb-2">Carpenteria metallica</p>
+      <span class="btn-vedi">Vedi Gallery</span>
+    </div>
+  </div>
+  <div class="card" data-category="carpenteria" onclick="openGallery('gallery4', 'Scalo Romana')">
+    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478566/scaloromana_0_l16hr7.jpg">
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <h2 class="text-white text-xl font-bold drop-shadow">Scalo Romana</h2>
+      <p class="text-gray-300 text-sm mb-2">Carpenteria metallica</p>
+      <span class="btn-vedi">Vedi Gallery</span>
+    </div>
+  </div>
+  <div class="card" data-category="carpenteria" onclick="openGallery('gallery5', 'Seriate')">
+    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478346/seriate_0_vidu6a.jpg">
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <h2 class="text-white text-xl font-bold drop-shadow">Seriate</h2>
+      <p class="text-gray-300 text-sm mb-2">Carpenteria metallica</p>
+      <span class="btn-vedi">Vedi Gallery</span>
+    </div>
+  </div>
+  <div class="card" data-category="carpenteria" onclick="openGallery('gallery6', 'Vergiate')">
+    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479858/vergiate_1_cgpzqm.jpg">
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <h2 class="text-white text-xl font-bold drop-shadow">Vergiate</h2>
+      <p class="text-gray-300 text-sm mb-2">Carpenteria metallica</p>
+      <span class="btn-vedi">Vedi Gallery</span>
+    </div>
+  </div>
+  <div class="card" data-category="coperture" onclick="openGallery('gallery7', 'Gerenzano')">
+    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479704/gerenzano_1_kpmzbc.jpg">
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <h2 class="text-white text-xl font-bold drop-shadow">Gerenzano</h2>
+      <p class="text-gray-300 text-sm mb-2">Coperture e lattoneria</p>
+      <span class="btn-vedi">Vedi Gallery</span>
+    </div>
+  </div>
+  <div class="card" data-category="coperture" onclick="openGallery('gallery8', 'Saronno')">
+    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479476/saronno_1_rqz81h.jpg">
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <h2 class="text-white text-xl font-bold drop-shadow">Saronno</h2>
+      <p class="text-gray-300 text-sm mb-2">Coperture e lattoneria</p>
+      <span class="btn-vedi">Vedi Gallery</span>
+    </div>
+  </div>
+  <div class="card" data-category="coperture" onclick="openGallery('gallery9', 'Solaro')">
+    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479054/solaro_1_dgcqvy.jpg">
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <h2 class="text-white text-xl font-bold drop-shadow">Solaro</h2>
+      <p class="text-gray-300 text-sm mb-2">Coperture e lattoneria</p>
+      <span class="btn-vedi">Vedi Gallery</span>
+    </div>
+  </div>
+  <div class="card" data-category="progettazione" onclick="openGallery('gallery10', 'Castellanza')">
+    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478504/castellanza_0_s0jits.jpg">
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <h2 class="text-white text-xl font-bold drop-shadow">Castellanza</h2>
+      <p class="text-gray-300 text-sm mb-2">Progettazione e posa</p>
+      <span class="btn-vedi">Vedi Gallery</span>
+    </div>
+  </div>
+  <div class="card" data-category="progettazione" onclick="openGallery('gallery11', 'Cogliate')">
+    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478844/cogliate_1_c9g3ik.jpg">
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <h2 class="text-white text-xl font-bold drop-shadow">Cogliate</h2>
+      <p class="text-gray-300 text-sm mb-2">Progettazione e posa</p>
+      <span class="btn-vedi">Vedi Gallery</span>
+    </div>
+  </div>
+  <div class="card" data-category="progettazione" onclick="openGallery('gallery12', 'Milano — Duomo')">
+    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479585/duomo_1_fdslpo.jpg">
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <h2 class="text-white text-xl font-bold drop-shadow">Milano — Duomo</h2>
+      <p class="text-gray-300 text-sm mb-2">Progettazione e posa</p>
+      <span class="btn-vedi">Vedi Gallery</span>
+    </div>
+  </div>
+  <div class="card" data-category="progettazione" onclick="openGallery('gallery13', 'Novara')">
+    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478976/novara_1_bzrlkl.jpg">
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <h2 class="text-white text-xl font-bold drop-shadow">Novara</h2>
+      <p class="text-gray-300 text-sm mb-2">Progettazione e posa</p>
+      <span class="btn-vedi">Vedi Gallery</span>
+    </div>
+  </div>
+  <div class="card" data-category="progettazione" onclick="openGallery('gallery14', 'Pavia')">
+    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477909/pavia_0_rzb6yt.jpg">
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <h2 class="text-white text-xl font-bold drop-shadow">Pavia</h2>
+      <p class="text-gray-300 text-sm mb-2">Progettazione e posa</p>
+      <span class="btn-vedi">Vedi Gallery</span>
+    </div>
+  </div>
+  <div class="card" data-category="progettazione" onclick="openGallery('gallery15', 'Rescaldina')">
+    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478637/rescaldina_1_talynv.jpg">
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <h2 class="text-white text-xl font-bold drop-shadow">Rescaldina</h2>
+      <p class="text-gray-300 text-sm mb-2">Progettazione e posa</p>
+      <span class="btn-vedi">Vedi Gallery</span>
+    </div>
+  </div>
+  <div class="card" data-category="progettazione" onclick="openGallery('gallery16', 'Romano')">
+    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478290/romano_0_kugbsj.jpg">
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <h2 class="text-white text-xl font-bold drop-shadow">Romano</h2>
+      <p class="text-gray-300 text-sm mb-2">Progettazione e posa</p>
+      <span class="btn-vedi">Vedi Gallery</span>
     </div>
   </div>
 
-  <!-- CARD 2 – Solaro coperture -->
-  <div class="card" data-category="coperture">
-    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479028/solaro_16_w6iddn.jpg">
+  <!-- Pavia – pareti -->
+  <div class="card" data-category="pareti" onclick="openGallery('gallery_pareti_pavia', 'Pavia')">
+    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477898/pavia_30_prifo2.jpg">
     <div class="card-overlay"></div>
     <div class="card-content">
-      <div>
-        <h2 class="text-white text-xl font-bold drop-shadow">Solaro</h2>
-        <p class="text-gray-300 text-sm">Coperture e lattoneria</p>
-      </div>
-      <div class="gallery-panel" id="gallery4">
-        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479035/solaro_12_ggy2ow.jpg" onclick="openModal(this.src); event.stopPropagation()">
-        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479033/solaro_13_yd0wtj.jpg" onclick="openModal(this.src); event.stopPropagation()">
-        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479022/solaro_19_y51pqw.jpg" onclick="openModal(this.src); event.stopPropagation()">
-        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479044/solaro_7_jaelwu.jpg" onclick="openModal(this.src); event.stopPropagation()">
-      </div>
-      <button class="btn-gallery" onclick="toggleGallery('gallery4'); event.stopPropagation()">Visualizza Gallery</button>
+      <h2 class="text-white text-xl font-bold drop-shadow">Pavia</h2>
+      <p class="text-gray-300 text-sm mb-2">Montaggio pareti</p>
+      <span class="btn-vedi">Vedi Gallery</span>
     </div>
   </div>
 
-  <!-- CARD 3 – Gerenzano coperture -->
-  <div class="card" data-category="coperture">
-    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479700/gerenzano_3_ncvfso.jpg">
-    <div class="card-overlay"></div>
-    <div class="card-content">
-      <div>
-        <h2 class="text-white text-xl font-bold drop-shadow">Gerenzano</h2>
-        <p class="text-gray-300 text-sm">Coperture e lattoneria</p>
-      </div>
-      <div class="gallery-panel" id="gallery5">
-        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479691/gerenzano_7_dpbne0.jpg" onclick="openModal(this.src); event.stopPropagation()">
-        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479692/gerenzano_6_lusctp.jpg" onclick="openModal(this.src); event.stopPropagation()">
-        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479689/gerenzano_8_eiaig1.jpg" onclick="openModal(this.src); event.stopPropagation()">
-        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479697/gerenzano_4_tfu2kc.jpg" onclick="openModal(this.src); event.stopPropagation()">
-      </div>
-      <button class="btn-gallery" onclick="toggleGallery('gallery5'); event.stopPropagation()">Visualizza Gallery</button>
-    </div>
   </div>
-
-  <!-- CARD 4 – Saronno coperture -->
-  <div class="card" data-category="coperture">
-    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479431/saronno_24_tc6vfv.jpg">
-    <div class="card-overlay"></div>
-    <div class="card-content">
-      <div>
-        <h2 class="text-white text-xl font-bold drop-shadow">Saronno</h2>
-        <p class="text-gray-300 text-sm">Coperture e lattoneria</p>
-      </div>
-      <div class="gallery-panel" id="gallery6">
-        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479457/saronno_11_froivg.jpg" onclick="openModal(this.src); event.stopPropagation()">
-        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479413/saronno_33_vh6jbl.jpg" onclick="openModal(this.src); event.stopPropagation()">
-        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479402/saronno_39_cdsbl0.jpg" onclick="openModal(this.src); event.stopPropagation()">
-        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479407/saronno_36_v7vps3.jpg" onclick="openModal(this.src); event.stopPropagation()">
-      </div>
-      <button class="btn-gallery" onclick="toggleGallery('gallery6'); event.stopPropagation()">Visualizza Gallery</button>
-    </div>
-  </div>
-
-  <!-- CARD 5 – Vergiate carpenteria -->
-  <div class="card" data-category="carpenteria">
-    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479847/vergiate_5_xwqo2h.jpg">
-    <div class="card-overlay"></div>
-    <div class="card-content">
-      <div>
-        <h2 class="text-white text-xl font-bold drop-shadow">Vergiate</h2>
-        <p class="text-gray-300 text-sm">Carpenteria metallica</p>
-      </div>
-      <div class="gallery-panel" id="gallery2">
-        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479847/vergiate_5_xwqo2h.jpg" onclick="openModal(this.src); event.stopPropagation()">
-      </div>
-      <button class="btn-gallery" onclick="toggleGallery('gallery2'); event.stopPropagation()">Visualizza Gallery</button>
-    </div>
-  </div>
-
-  <!-- CARD 6 – Milano progettazione -->
-  <div class="card" data-category="progettazione">
-    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479574/duomo_6_n4nzyt.jpg">
-    <div class="card-overlay"></div>
-    <div class="card-content">
-      <div>
-        <h2 class="text-white text-xl font-bold drop-shadow">Milano</h2>
-        <p class="text-gray-300 text-sm">Progettazione e posa</p>
-      </div>
-      <div class="gallery-panel" id="gallery3">
-        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479574/duomo_6_n4nzyt.jpg" onclick="openModal(this.src); event.stopPropagation()">
-      </div>
-      <button class="btn-gallery" onclick="toggleGallery('gallery3'); event.stopPropagation()">Visualizza Gallery</button>
-    </div>
-  </div>
-
-</div>
 </section>
 
-<!-- MODAL -->
-<div id="modal" class="fixed inset-0 bg-black bg-opacity-85 hidden items-center justify-center z-50 p-4" onclick="closeModal()">
-  <img id="modalImg" class="max-w-full rounded-xl shadow-2xl" style="max-height:90vh;">
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <button id="lb-close" onclick="closeLightbox()">✕</button>
+  <div id="lightbox-title"></div>
+  <img id="lightbox-img" src="">
+  <div id="lightbox-counter"></div>
+  <button class="lb-btn" id="lb-prev" onclick="changePhoto(-1)">&#8249;</button>
+  <button class="lb-btn" id="lb-next" onclick="changePhoto(1)">&#8250;</button>
 </div>
 
 <div class="w-full max-w-4xl mx-auto h-px bg-red-600 opacity-40 my-12"></div>
 
-<!-- Footer -->
+<!-- FOOTER -->
 <footer class="py-10 text-center text-sm text-gray-500 border-t space-y-2">
   <p>P.IVA: 13216840860</p>
   <p>Indirizzo: <a href="https://www.google.com/maps/search/?api=1&query=Via+Pasino+Sforza+61+San+Colombano+al+Lambro" target="_blank" class="hover:underline">Via Pasino Sforza 61, San Colombano al Lambro</a></p>
@@ -259,46 +317,91 @@
 </footer>
 
 <script>
-  function filterCards(category, btn) {
-    document.querySelectorAll(".card").forEach(card => {
-      const cat = card.getAttribute("data-category");
-      card.style.display = (category === "all" || cat === category) ? "block" : "none";
-    });
-    document.querySelectorAll(".filter-btn").forEach(b => {
-      b.classList.remove("bg-white", "text-black", "font-semibold");
-      b.classList.add("border", "border-white", "text-white");
-    });
-    btn.classList.remove("border", "border-white", "text-white");
-    btn.classList.add("bg-white", "text-black", "font-semibold");
-  }
+const galleries = {
+  "gallery_pareti_pavia": ["https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477898/pavia_30_prifo2.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477899/pavia_28_mi1b3z.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477898/pavia_29_tfvomy.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477903/pavia_14_t425qx.jpg"],
+  "gallery1": ["https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478732/castiglione_1_hgrko2.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478731/castiglione_2_gzvm7d.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478730/castiglione_3_ll82hx.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478728/castiglione_4_t1m9gq.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478726/castiglione_5_ww3hpt.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478725/castiglione_6_pd8kxg.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478724/castiglione_7_ueaeep.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478723/castiglione_8_qpdgjf.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478721/castiglione_9_jhuddb.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478720/castiglione_10_eu91je.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478719/castiglione_11_usjcvu.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478718/castiglione_12_rph6ga.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478716/castiglione_13_ov4zdl.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478715/castiglione_14_gd68tr.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478714/castiglione_15_waatuv.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478712/castiglione_16_buwyxk.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478711/castiglione_17_jgnir2.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478711/castiglione_18_riwmiy.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478710/castiglione_19_mqczmu.jpg"],
+  "gallery2": ["https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478920/ceriano_1_gblrxz.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478918/ceriano_2_ssj7cf.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478916/ceriano_3_iujiov.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478914/ceriano_4_pi5yr3.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478912/ceriano_5_r9p54l.jpg"],
+  "gallery3": ["https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478423/gorgonzola_0_qk1adu.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478422/gorgonzola_1_ur2ogv.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478422/gorgonzola_2_mkoajb.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478420/gorgonzola_3_ep3ju3.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478420/gorgonzola_4_tubdkl.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478419/gorgonzola_5_eradd2.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478418/gorgonzola_6_hacx3o.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478417/gorgonzola_7_hcx88x.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478416/gorgonzola_8_z8atcu.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478415/gorgonzola_9_dy2nhu.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478414/gorgonzola_10_ofvxon.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478413/gorgonzola_11_sk74qd.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478412/gorgonzola_12_nihkth.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478411/gorgonzola_13_zzcegj.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478410/gorgonzola_14_x8if4q.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478409/gorgonzola_15_pez0qg.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478408/gorgonzola_16_ltvcsl.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478407/gorgonzola_17_rsw1ga.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478407/gorgonzola_18_c4iv5p.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478406/gorgonzola_19_if9k4w.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478404/gorgonzola_20_yjyyvy.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478404/gorgonzola_21_hhaups.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478403/gorgonzola_22_g9antk.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478402/gorgonzola_23_jjrpfa.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478401/gorgonzola_24_topzuc.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478400/gorgonzola_25_ytgufz.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478400/gorgonzola_26_vbvgys.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478399/gorgonzola_27_velpmm.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478397/gorgonzola_28_n6nsmq.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478396/gorgonzola_29_iuvmga.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478396/gorgonzola_30_kzwqia.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478396/gorgonzola_32_xevkj9.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478395/gorgonzola_31_yx4id5.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478394/gorgonzola_33_idg724.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478394/gorgonzola_34_nbp5gt.jpg"],
+  "gallery4": ["https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478566/scaloromana_0_l16hr7.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478565/scaloromana_1_vnbaar.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478564/scaloromana_2_dgqe3c.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478563/scaloromana_3_lsxbk4.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478562/scaloromana_4_rrvnxz.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478561/scaloromana_5_hzynla.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478560/scaloromana_6_inbymk.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478558/scaloromana_7_mt4vep.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478557/scaloromana_8_nsrk9q.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478556/scaloromana_9_x98lzk.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478555/scaloromana_10_b0h2hx.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478554/scaloromana_11_ah9puo.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478552/scaloromana_12_ywkqef.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478551/scaloromana_13_anr1ar.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478550/scaloromana_14_awle81.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478549/scaloromana_15_johvfz.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478548/scaloromana_16_bp09di.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478547/scaloromana_17_q9tdii.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478546/scaloromana_18_jqwdde.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478545/scaloromana_19_ncujib.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478544/scaloromana_20_ij7vvq.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478543/scaloromana_21_qqouot.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478543/scaloromana_22_ppod60.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478542/scaloromana_23_cnqy1j.jpg"],
+  "gallery5": ["https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478346/seriate_0_vidu6a.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478346/seriate_1_t7apib.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478345/seriate_2_sowxp1.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478344/seriate_3_ateeze.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478344/seriate_4_fyrymj.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478343/seriate_5_aaso1m.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478342/seriate_6_ujudhl.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478341/seriate_7_hife4d.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478340/seriate_8_uhhqzl.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478340/seriate_9_xt5olt.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478338/seriate_11_qmxuj1.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478339/seriate_10_sc2xb2.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478338/seriate_12_du9aio.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478337/seriate_13_ucxkbz.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478336/seriate_15_xz8mln.jpg"],
+  "gallery6": ["https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479858/vergiate_1_cgpzqm.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479854/vergiate_2_tcxr0g.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479853/vergiate_3_wewkeg.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479850/vergiate_4_coopqw.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479847/vergiate_5_xwqo2h.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479845/vergiate_6_ailmye.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479842/vergiate_7_hqebit.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479841/vergiate_8_tgmjo4.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479838/vergiate_9_l23aky.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479836/vergiate_10_qn1tq3.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479834/vergiate_11_h2smgb.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479832/vergiate_12_wzjye3.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479829/vergiate_13_i7luyv.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479827/vergiate_14_t6rhpf.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479825/vergiate_15_pcru93.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479822/vergiate_16_qzvkmi.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479820/vergiate_17_yq4klg.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479817/vergiate_18_runk65.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479816/vergiate_19_loob8d.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479812/vergiate_20_k3qdjf.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479811/vergiate_21_whbub5.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479809/vergiate_22_sgqf4j.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479806/vergiate_23_ohckqs.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479804/vergiate_24_zrdgzg.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479802/vergiate_25_lgqt8p.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479800/vergiate_26_ue1fb4.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479797/vergiate_27_j42y7o.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479795/vergiate_28_urnvt1.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479793/vergiate_29_q2oxyb.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479791/vergiate_30_k8y39o.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479789/vergiate_31_gpddyh.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479786/vergiate_32_tirvok.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479785/vergiate_33_w3jrke.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479782/vergiate_34_scpsic.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479780/vergiate_35_air6th.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479777/vergiate_36_c7tn1j.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479774/vergiate_37_wz8tsq.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479772/vergiate_38_nylyna.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479770/vergiate_39_eiqmjx.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479766/vergiate_40_bg665z.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479764/vergiate_41_jqkyhn.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479763/vergiate_42_potqlh.jpg"],
+  "gallery7": ["https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479704/gerenzano_1_kpmzbc.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479701/gerenzano_2_wfc4vo.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479700/gerenzano_3_ncvfso.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479697/gerenzano_4_tfu2kc.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479695/gerenzano_5_baondj.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479692/gerenzano_6_lusctp.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479691/gerenzano_7_dpbne0.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479689/gerenzano_8_eiaig1.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479685/gerenzano_10_jgcwwp.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479682/gerenzano_11_snsgz6.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479681/gerenzano_12_f8urll.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479678/gerenzano_13_qkjpzn.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479676/gerenzano_14_axelvc.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479675/gerenzano_15_vanm1t.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479672/gerenzano_16_n56sh6.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479671/gerenzano_17_zrj7pp.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479669/gerenzano_18_rvct2m.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479667/gerenzano_19_lkk5qp.jpg"],
+  "gallery8": ["https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479476/saronno_1_rqz81h.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479475/saronno_2_wy7b0v.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479473/saronno_3_erg2ex.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479470/saronno_4_sytcvg.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479469/saronno_5_yqqizr.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479466/saronno_6_fpjkja.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479465/saronno_7_ss32gf.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479462/saronno_8_fsx4wi.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479461/saronno_9_xa8rxl.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479458/saronno_10_nmx2zy.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479457/saronno_11_froivg.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479454/saronno_12_huvs39.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479452/saronno_13_hhzskf.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479451/saronno_14_fmga7f.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479448/saronno_15_wq3amz.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479446/saronno_16_kuodkb.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479444/saronno_17_bcv89g.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479443/saronno_18_nyfibg.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479440/saronno_19_lepewb.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479439/saronno_20_hkx0gz.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479436/saronno_21_za6pip.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479435/saronno_22_shodyw.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479433/saronno_23_qaduzb.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479431/saronno_24_tc6vfv.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479429/saronno_25_wmwbsg.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479427/saronno_26_wyaeuz.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479425/saronno_27_nicudb.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479423/saronno_28_inwny3.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479421/saronno_29_axa679.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479419/saronno_30_ywlhrt.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479417/saronno_31_ii0vwy.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479415/saronno_32_gpjiuu.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479413/saronno_33_vh6jbl.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479411/saronno_34_yf7bcv.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479409/saronno_35_yjx1j1.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479407/saronno_36_v7vps3.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479405/saronno_37_is6vns.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479402/saronno_38_wlgjmi.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479402/saronno_39_cdsbl0.jpg"],
+  "gallery9": ["https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479054/solaro_1_dgcqvy.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479052/solaro_2_xhkoum.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479050/solaro_3_fsko3b.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479049/solaro_4_hgfzn3.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479047/solaro_5_rekcfy.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479045/solaro_6_mw8on3.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479044/solaro_7_jaelwu.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479042/solaro_8_nxpz7j.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479040/solaro_9_hbdp4w.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479039/solaro_10_e8wavv.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479037/solaro_11_oqvjnq.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479035/solaro_12_ggy2ow.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479033/solaro_13_yd0wtj.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479032/solaro_14_wlptjz.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479030/solaro_15_b61kvw.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479028/solaro_16_w6iddn.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479026/solaro_17_y4vgc8.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479025/solaro_18_rsxh76.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479022/solaro_19_y51pqw.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479020/solaro_20_e8ebkb.jpg"],
+  "gallery10": ["https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478504/castellanza_0_s0jits.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478503/castellanza_1_offd4u.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478502/castellanza_2_n43soq.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478501/castellanza_3_hs0dip.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478501/castellanza_4_lvlodu.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478500/castellanza_5_jdlnsp.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478498/castellanza_6_da4dse.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478497/castellanza_7_ubd3rb.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478496/castellanza_8_bdvm64.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478495/castellanza_9_qbcfbz.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478494/castellanza_10_o2p0ss.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478493/castellanza_11_dgctgp.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478492/castellanza_12_od4nrw.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478491/castellanza_13_huck8b.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478489/castellanza_14_x8vj2c.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478489/castellanza_15_wmzzxo.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478488/castellanza_16_ywiavf.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478487/castellanza_17_ukypq0.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478486/castellanza_18_vcb8ut.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478485/castellanza_19_p6hhmu.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478484/castellanza_20_can0zo.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478483/castellanza_21_qvpb4d.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478483/castellanza_22_e1fp39.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478482/castellanza_23_kpt04w.jpg"],
+  "gallery11": ["https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478844/cogliate_1_c9g3ik.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478843/cogliate_2_sgxnqe.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478841/cogliate_3_qvtnxu.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478840/cogliate_4_iw6ewg.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478838/cogliate_5_sxpwin.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478836/cogliate_6_rghpvp.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478834/cogliate_7_be1zcr.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478833/cogliate_8_bf8b3w.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478831/cogliate_9_skdlm0.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478830/cogliate_10_cfqmwj.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478828/cogliate_11_aayowj.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478826/cogliate_12_u8zmaa.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478825/cogliate_13_ygnqow.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478823/cogliate_14_lgpqve.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478822/cogliate_15_mfz3zf.jpg"],
+  "gallery12": ["https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479585/duomo_1_fdslpo.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479582/duomo_2_lzkqjm.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479580/duomo_3_hymzov.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479577/duomo_4_nsbhxx.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479575/duomo_5_wcw4kb.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479574/duomo_6_n4nzyt.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479572/duomo_7_ayidbq.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479569/duomo_8_scbwf2.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479567/duomo_9_lslsrz.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479564/duomo_10_wun0rw.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479563/duomo_13_fshwmh.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479561/duomo_11_ha6wef.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479559/duomo_12_rsgekk.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479556/duomo_39_gthixi.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479554/duomo_40_erryuy.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479551/duomo_41_gh921n.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479550/duomo_42_yteazw.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479547/duomo_43_miy247.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479545/duomo_44_cmfech.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479542/duomo_45_vdcdwz.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479540/duomo_46_p6dukg.jpg"],
+  "gallery13": ["https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478976/novara_1_bzrlkl.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478974/novara_2_x2oveq.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478972/novara_3_hfzkok.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478971/novara_4_ynbrua.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478970/novara_5_kqcyvm.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478968/novara_6_fpfz5a.jpg"],
+  "gallery14": ["https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477909/pavia_0_rzb6yt.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477908/pavia_1_jdgjpc.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477908/pavia_2_rkktax.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477907/pavia_4_yxot0x.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477907/pavia_3_qyvuaw.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477907/pavia_5_b0ruo6.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477906/pavia_6_w1l1ha.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477906/pavia_7_amqvta.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477906/pavia_8_xe5wew.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477905/pavia_9_yfp7cp.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477905/pavia_10_bxzb72.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477904/pavia_11_iio7fl.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477904/pavia_12_d7pzat.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477904/pavia_13_tgt0km.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477903/pavia_14_t425qx.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477903/pavia_15_ni3cqk.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477903/pavia_16_ieomsy.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477903/pavia_17_hbefsb.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477902/pavia_18_myeo94.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477902/pavia_19_dhnmgu.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477902/pavia_20_sh9vrt.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477901/pavia_21_r9b1cp.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477901/pavia_22_hab54l.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477900/pavia_23_kowyfc.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477900/pavia_24_f6oo9d.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477899/pavia_25_rp0k5m.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477899/pavia_26_jjwvod.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477899/pavia_27_vbmnbq.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477899/pavia_28_mi1b3z.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477898/pavia_29_tfvomy.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477898/pavia_30_prifo2.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477898/pavia_31_tfd8ec.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477897/pavia_34_as645z.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477898/pavia_35_ctvwvf.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477897/pavia_32_q4zxqd.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477897/pavia_36_hkaybm.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477897/pavia_33_zqdf8k.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477897/pavia_37_aafh1u.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477897/pavia_38_s5xnzl.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477896/pavia_39_vl8ujh.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477896/pavia_40_rpfwru.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477896/pavia_44_qwuhmr.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477896/pavia_43_jmkatc.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477896/pavia_41_z3ufto.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477895/pavia_42_b14ihq.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477895/pavia_45_cstw90.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477895/pavia_46_v6scwq.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477894/pavia_47_g7hxt6.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477894/pavia_49_e8cy35.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477894/pavia_51_dgpzeo.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477894/pavia_48_w5uu1y.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477894/pavia_50_iy5ycy.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477893/pavia_53_ivfkud.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477893/pavia_52_fj3fls.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477891/pavia_54_su941m.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477890/pavia_55_dtyv1k.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477890/pavia_56_cdi2au.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477890/pavia_59_zgejrh.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477890/pavia_57_fxqdby.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477889/pavia_58_vzqk3o.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477889/pavia_60_fzthrq.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477888/pavia_62_tqubpi.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477888/pavia_64_ib0cby.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477888/pavia_61_karcsg.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477888/pavia_63_g6diwx.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477888/pavia_65_dy5s9p.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477887/pavia_66_et8ygv.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477887/pavia_67_eczlcj.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477887/pavia_69_ga5cc5.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477887/pavia_68_okeio2.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477886/pavia_73_ki71mb.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477886/pavia_70_she0fc.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477886/pavia_74_b8wsry.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477886/pavia_71_vrjrep.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477886/pavia_72_y5mqif.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477886/pavia_75_xgqgf6.jpg"],
+  "gallery15": ["https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478637/rescaldina_1_talynv.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478636/rescaldina_2_p0uwue.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478635/rescaldina_3_xgp08i.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478634/rescaldina_4_vodxdm.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478633/rescaldina_5_tdh5kt.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478632/rescaldina_6_fbr5vq.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478631/rescaldina_7_w9csik.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478629/rescaldina_8_qpm1ov.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478628/rescaldina_9_rtujzs.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478627/rescaldina_10_w42kub.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478626/rescaldina_11_rwntlb.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478625/rescaldina_12_egpkmc.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478624/rescaldina_13_v11w9f.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478622/rescaldina_14_obpxv1.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478621/rescaldina_15_vxg38e.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478620/rescaldina_16_o2lnwd.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478619/rescaldina_17_gimf4h.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478618/rescaldina_18_vamqud.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478617/rescaldina_19_qxcair.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478615/rescaldina_20_vajhmx.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478614/rescaldina_21_xvl5tw.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478613/rescaldina_22_m2cur4.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478612/rescaldina_23_srwzc4.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478610/rescaldina_24_fgeuql.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478609/rescaldina_25_nsfy4k.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478608/rescaldina_26_yx41w4.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478607/rescaldina_27_rxmf0t.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478606/rescaldina_28_nfh0e1.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478605/rescaldina_29_yemanm.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478604/rescaldina_30_dbp2tb.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478603/rescaldina_31_b9pygw.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478602/rescaldina_32_xfot5x.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478601/rescaldina_33_wyuaet.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478600/rescaldina_34_cyeuwc.jpg"],
+  "gallery16": ["https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478290/romano_0_kugbsj.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478289/romano_2_wpxfhm.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478289/romano_1_kt9vli.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478288/romano_3_sjphel.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478287/romano_4_rqmbv9.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478287/romano_5_a0wujr.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478287/romano_6_uaar3a.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478286/romano_7_zoe96q.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478285/romano_8_ubkyym.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478285/romano_9_ej6rfv.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478285/romano_10_bpppqi.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478284/romano_11_lyh17b.jpg"],
+};
 
-  function toggleGallery(id) {
-    const target = document.getElementById(id);
-    const isOpen = target.classList.contains("open");
-    document.querySelectorAll(".gallery-panel").forEach(el => el.classList.remove("open"));
-    if (!isOpen) target.classList.add("open");
-  }
 
-  function openModal(src) {
-    document.getElementById("modalImg").src = src;
-    const modal = document.getElementById("modal");
-    modal.classList.remove("hidden");
-    modal.classList.add("flex");
-  }
+let currentGallery = null;
+let currentIndex = 0;
+let currentTitle = '';
 
-  function closeModal() {
-    const modal = document.getElementById("modal");
-    modal.classList.add("hidden");
-    modal.classList.remove("flex");
-  }
+function openGallery(gid, title) {
+  currentGallery = galleries[gid];
+  currentIndex = 0;
+  currentTitle = title;
+  showPhoto();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
 
-  window.addEventListener("DOMContentLoaded", () => {
-    const categoria = new URLSearchParams(window.location.search).get("categoria");
-    if (categoria) {
-      const btn = document.querySelector(`[onclick*="'${categoria}'"]`);
-      if (btn) filterCards(categoria, btn);
-    }
+function showPhoto() {
+  const img = document.getElementById('lightbox-img');
+  img.style.opacity = '0';
+  setTimeout(() => {
+    img.src = currentGallery[currentIndex];
+    img.style.opacity = '1';
+  }, 150);
+  document.getElementById('lightbox-title').textContent = currentTitle;
+  document.getElementById('lightbox-counter').textContent = (currentIndex + 1) + ' / ' + currentGallery.length;
+}
+
+function changePhoto(dir) {
+  currentIndex = (currentIndex + dir + currentGallery.length) % currentGallery.length;
+  showPhoto();
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'ArrowRight') changePhoto(1);
+  if (e.key === 'ArrowLeft') changePhoto(-1);
+  if (e.key === 'Escape') closeLightbox();
+});
+
+document.getElementById('lightbox').addEventListener('click', e => {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+});
+
+function filterCards(category, btn) {
+  document.querySelectorAll(".card").forEach(card => {
+    card.style.display = (category === 'all' || card.getAttribute('data-category') === category) ? 'block' : 'none';
   });
+  document.querySelectorAll(".filter-btn").forEach(b => {
+    b.classList.remove("bg-white", "text-black", "font-semibold");
+    b.classList.add("border", "border-white", "text-white");
+  });
+  btn.classList.remove("border", "border-white", "text-white");
+  btn.classList.add("bg-white", "text-black", "font-semibold");
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  const categoria = new URLSearchParams(window.location.search).get("categoria");
+  if (categoria) {
+    const btn = document.querySelector(`[onclick*="'${categoria}'"]`);
+    if (btn) filterCards(categoria, btn);
+  }
+});
 </script>
 </body>
 </html>
