@@ -2,179 +2,104 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contatti - M.C.M.A Coperture</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-
 <body class="bg-white text-gray-900">
 
- <!-- Navbar -->
-  <nav class="flex justify-between items-center px-6 md:px-8 py-5 border-b bg-white fixed top-0 w-full z-50">
-    <a href="index.html" class="flex items-center">
-     <img src="logo.jpg" alt="M.C.M.A Coperture" class="h-14 md:h-16 object-contain">
-    </a>
-
-    <!-- Desktop Menu -->
-    <div class="hidden md:flex space-x-6 text-sm text-gray-600">
-      <a href="servizi.html" class="hover:text-black">Servizi</a>
-      <a href="realizzazioni.html" class="hover:text-black">Realizzazioni</a>
-      <a href="index.html" class="hover:text-black">Chi siamo</a>
-      <a href="#contatti" class="hover:text-black">Contatti</a>
-    </div>
-
-    <!-- Mobile Button -->
-    <button id="menuBtn" class="md:hidden text-gray-700">
-      ☰
-    </button>
-  </nav>
-<!-- Hero -->
-<section class="relative flex items-center justify-center text-center py-32 px-4 text-white mt-20 overflow-hidden">
-
-  <!-- Background -->
-  <div class="absolute inset-0">
-    <img 
-      src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478340/seriate_9_xt5olt.jpg"
-      class="w-full h-full object-cover"
-    >
-    <div class="absolute inset-0 bg-orange-600 opacity-70"></div>
+<!-- NAVBAR -->
+<nav class="flex justify-between items-center px-4 py-4 border-b bg-white fixed top-0 w-full z-50 shadow-sm">
+  <a href="index.html"><img src="logo.jpg" alt="M.C.M.A Coperture" class="h-12 md:h-16 object-contain"></a>
+  <div class="hidden md:flex space-x-6 text-sm text-gray-600">
+    <a href="servizi.html" class="hover:text-black">Servizi</a>
+    <a href="realizzazioni.html" class="hover:text-black">Realizzazioni</a>
+    <a href="index.html" class="hover:text-black">Chi siamo</a>
+    <a href="contatti.html" class="hover:text-black">Contatti</a>
   </div>
-
-  <!-- Contenuto -->
-  <div class="relative z-10 max-w-6xl mx-auto">
-
-    <!-- Titolo -->
-    <h1 class="text-4xl md:text-6xl font-bold mb-6">
-      Come Contattarci
-    </h1>
-
-    <!-- Cards -->
-    <div class="flex flex-col md:flex-row items-center justify-center gap-6">
-
-      <!-- Sinistra -->
-      <div class="w-full md:w-1/4 bg-white rounded-2xl overflow-hidden shadow-lg">
-        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479697/gerenzano_4_tfu2kc.jpg" class="w-full h-48 object-cover">
-      </div>
-
-      <!-- Centro (più grande) -->
-      <div class="w-full md:w-2/4 bg-white rounded-2xl overflow-hidden shadow-2xl">
-        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478410/gorgonzola_14_x8if4q.jpg" class="w-full h-72 object-cover">
-      </div>
-
-      <!-- Destra -->
-      <div class="w-full md:w-1/4 bg-white rounded-2xl overflow-hidden shadow-lg">
-        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479431/saronno_24_tc6vfv.jpg" class="w-full h-48 object-cover">
-      </div>
-
-    </div>
-
+  <button id="menuBtn" class="md:hidden p-2 text-gray-700 text-2xl leading-none">☰</button>
+</nav>
+<div id="mobileMenu" class="hidden fixed top-16 left-0 w-full bg-white border-b z-40 shadow-md">
+  <div class="flex flex-col text-center py-4 space-y-4 text-gray-700 text-base font-medium">
+    <a href="servizi.html" class="py-1 hover:text-red-600">Servizi</a>
+    <a href="realizzazioni.html" class="py-1 hover:text-red-600">Realizzazioni</a>
+    <a href="index.html" class="py-1 hover:text-red-600">Chi siamo</a>
+    <a href="contatti.html" class="py-1 hover:text-red-600">Contatti</a>
   </div>
-
-</section>
- <div class="w-full max-w-4xl mx-auto h-px bg-red-600 opacity-40 my-12"></div>
-<!-- CONTENUTO -->
-<section class="px-4 md:px-6 pt-20 pb-20">
-<div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-
-    <!-- Info -->
-<div class="text-left">
-  <h2 class="text-2xl font-semibold mb-4">Contattaci</h2>
-  
-  <p class="text-gray-600 mb-2">
-    Email: 
-    <a href="mailto:mcma.coperture@hotmail.com" class="text-blue-500 hover:underline">
-      mcma.coperture@hotmail.com
-    </a>
-  </p>
-
-  <p class="text-gray-600 mb-2">
-    Telefono: 
-    <a href="tel:+393283480607" class="text-blue-500 hover:underline">
-      +39 328 3480607
-    </a>
-  </p>
-
-  <p class="text-gray-600 mb-2">
-    Instagram: 
-    <a 
-      href="https://www.instagram.com/m.c.m.a.coperture" 
-      target="_blank"
-      class="text-blue-500 hover:underline"
-    >
-      @m.c.m.a.coperture
-    </a>
-  </p>
-
-  <p class="text-gray-600 mb-2">
-  Indirizzo: 
-  <a 
-    href="https://www.google.com/maps/search/?api=1&query=Via+Pasino+Sforza+61+San+Colombano+al+Lambro" 
-    target="_blank"
-    class="text-blue-500 hover:underline"
-  >
-    Via Pasino Sforza 61, San Colombano al Lambro
-  </a>
-</p>
 </div>
 
+<!-- HERO -->
+<section class="relative flex items-center justify-center text-center py-20 md:py-32 px-4 text-white mt-16 overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478340/seriate_9_xt5olt.jpg" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-orange-600 opacity-70"></div>
+  </div>
+  <div class="relative z-10 max-w-6xl mx-auto w-full">
+    <h1 class="text-3xl md:text-6xl font-bold mb-6">Come Contattarci</h1>
+    <div class="flex items-center justify-center gap-4">
+      <div class="hidden md:block w-1/4 bg-white rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479697/gerenzano_4_tfu2kc.jpg" class="w-full h-48 object-cover">
+      </div>
+      <div class="w-full md:w-2/4 bg-white rounded-2xl overflow-hidden shadow-2xl">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478410/gorgonzola_14_x8if4q.jpg" class="w-full h-52 md:h-72 object-cover">
+      </div>
+      <div class="hidden md:block w-1/4 bg-white rounded-2xl overflow-hidden shadow-lg">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479431/saronno_24_tc6vfv.jpg" class="w-full h-48 object-cover">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="w-full max-w-4xl mx-auto h-px bg-red-600 opacity-40 my-10 md:my-12"></div>
+
+<!-- CONTENUTO -->
+<section class="px-4 md:px-6 py-10 md:py-20">
+  <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+
+    <!-- Info -->
+    <div class="text-left space-y-4">
+      <h2 class="text-2xl font-semibold mb-4">Contattaci</h2>
+      <p class="text-gray-600">
+        Email: <a href="mailto:mcma.coperture@hotmail.com" class="text-blue-500 hover:underline">mcma.coperture@hotmail.com</a>
+      </p>
+      <p class="text-gray-600">
+        Telefono: <a href="tel:+393283480607" class="text-blue-500 hover:underline">+39 328 3480607</a>
+      </p>
+      <p class="text-gray-600">
+        Instagram: <a href="https://www.instagram.com/m.c.m.a.coperture" target="_blank" class="text-blue-500 hover:underline">@m.c.m.a.coperture</a>
+      </p>
+      <p class="text-gray-600">
+        Indirizzo: <a href="https://www.google.com/maps/search/?api=1&query=Via+Pasino+Sforza+61+San+Colombano+al+Lambro" target="_blank" class="text-blue-500 hover:underline">Via Pasino Sforza 61, San Colombano al Lambro</a>
+      </p>
+    </div>
+
     <!-- Form -->
-    <form action="https://formspree.io/f/yourcode" method="POST" class="flex flex-col gap-4">
-      <input type="text" name="nome" placeholder="Nome" class="p-4 border rounded-lg">
-      <input type="email" name="email" placeholder="Email" class="p-4 border rounded-lg">
-      <textarea name="messaggio" placeholder="Messaggio" class="p-4 border rounded-lg h-32"></textarea>
-      <button class="px-6 py-4 bg-orange-600 text-white rounded-full">
-        Invia
-      </button>
-    </form>
+    <div class="flex flex-col gap-4">
+      <input type="text" name="nome" placeholder="Nome" class="p-4 border rounded-lg w-full text-base">
+      <input type="email" name="email" placeholder="Email" class="p-4 border rounded-lg w-full text-base">
+      <textarea name="messaggio" placeholder="Messaggio" class="p-4 border rounded-lg h-32 w-full text-base"></textarea>
+      <button class="px-6 py-4 bg-orange-600 text-white rounded-full text-base font-semibold w-full">Invia</button>
+    </div>
 
   </div>
-
 </section>
-   <div class="w-full max-w-4xl mx-auto h-px bg-red-600 opacity-40 my-12"></div>
-<!--Footer-->
-<footer class="py-10 text-center text-sm text-gray-500 border-t space-y-2">
 
+<div class="w-full max-w-4xl mx-auto h-px bg-red-600 opacity-40 my-10 md:my-12"></div>
+
+<!-- FOOTER -->
+<footer class="py-10 text-center text-sm text-gray-500 border-t space-y-2 px-4">
   <p>P.IVA: 13216840860</p>
-
-  <p>
-    Indirizzo: 
-    <a 
-      href="https://www.google.com/maps/search/?api=1&query=Via+Pasino+Sforza+61+San+Colombano+al+Lambro" 
-      target="_blank"
-      class="hover:underline"
-    >
-      Via Pasino Sforza 61, San Colombano al Lambro
-    </a>
-  </p>
-
-  <p>
-    Telefono: 
-    <a href="tel:+393283480607" class="text-blue-500 hover:underline">
-      +39 328 3480607
-    </a>
-  </p>
-
-  <p>
-    Email: 
-    <a href="mailto:mcma.coperture@hotmail.com" class="text-blue-500 hover:underline">
-      mcma.coperture@hotmail.com
-    </a>
-  </p>
-
-  <p>
-    Instagram: 
-    <a 
-      href="https://www.instagram.com/m.c.m.a.coperture" 
-      target="_blank"
-      class="text-blue-500 hover:underline"
-    >
-      @m.c.m.a.coperture
-    </a>
-  </p>
-
-  <p class="text-gray-400 mt-4">
-    © 2026 M.C.M.A Coperture — Tutti i diritti riservati
-  </p>
-
+  <p>Indirizzo: <a href="https://www.google.com/maps/search/?api=1&query=Via+Pasino+Sforza+61+San+Colombano+al+Lambro" target="_blank" class="hover:underline">Via Pasino Sforza 61, San Colombano al Lambro</a></p>
+  <p>Telefono: <a href="tel:+393283480607" class="text-blue-500 hover:underline">+39 328 3480607</a></p>
+  <p>Email: <a href="mailto:mcma.coperture@hotmail.com" class="text-blue-500 hover:underline">mcma.coperture@hotmail.com</a></p>
+  <p>Instagram: <a href="https://www.instagram.com/m.c.m.a.coperture" target="_blank" class="text-blue-500 hover:underline">@m.c.m.a.coperture</a></p>
+  <p class="text-gray-400 mt-4">© 2026 M.C.M.A Coperture — Tutti i diritti riservati</p>
 </footer>
+
+<script>
+  document.getElementById("menuBtn").addEventListener("click", () => {
+    document.getElementById("mobileMenu").classList.toggle("hidden");
+  });
+</script>
 </body>
 </html>
