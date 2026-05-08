@@ -2,6 +2,7 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Realizzazioni - M.C.M.A Coperture</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
@@ -9,7 +10,7 @@
       position: relative;
       border-radius: 16px;
       overflow: hidden;
-      min-height: 420px;
+      min-height: 280px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.15);
       transition: box-shadow 0.3s, transform 0.3s;
       cursor: pointer;
@@ -74,6 +75,13 @@
     .lb-btn:hover { background: rgba(220,38,38,0.8); }
     #lb-prev { left: 16px; }
     #lb-next { right: 16px; }
+    @media (max-width: 640px) {
+      .lb-btn { width: 44px; height: 44px; font-size: 1.5rem; }
+      #lb-prev { left: 12px; top: auto; bottom: 80px; transform: none; }
+      #lb-next { right: 12px; top: auto; bottom: 80px; transform: none; }
+      #lightbox-img { max-height: 65vh; }
+      #lightbox-title { font-size: 0.95rem; }
+    }
     #lb-close {
       position: absolute; top: 16px; right: 20px;
       background: none; border: none; color: white;
@@ -85,7 +93,7 @@
 <body class="bg-white text-gray-900">
 
 <!-- NAVBAR -->
-<nav class="flex justify-between items-center px-6 md:px-8 py-5 border-b bg-white fixed top-0 w-full z-50">
+<nav class="flex justify-between items-center px-4 py-4 border-b bg-white fixed top-0 w-full z-50 shadow-sm">
   <a href="index.html"><img src="logo.jpg" class="h-14 md:h-16"></a>
   <div class="hidden md:flex space-x-6 text-sm text-gray-600">
     <a href="servizi.html" class="hover:text-black">Servizi</a>
@@ -93,10 +101,10 @@
     <a href="index.html" class="hover:text-black">Chi siamo</a>
     <a href="contatti.html" class="hover:text-black">Contatti</a>
   </div>
-  <button class="md:hidden text-gray-700" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">☰</button>
+  <button class="md:hidden p-2 text-gray-700 text-2xl leading-none" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">☰</button>
 </nav>
 
-<div id="mobileMenu" class="hidden fixed top-20 left-0 w-full bg-white border-b z-40">
+<div id="mobileMenu" class="hidden fixed top-16 left-0 w-full bg-white border-b z-40 shadow-md">
   <div class="flex flex-col text-center py-4 space-y-4 text-gray-700">
     <a href="servizi.html">Servizi</a>
     <a href="realizzazioni.html">Realizzazioni</a>
@@ -106,20 +114,20 @@
 </div>
 
 <!-- HERO -->
-<section class="relative flex items-center justify-center text-center py-40 px-4 text-white mt-20 overflow-hidden">
+<section class="relative flex items-center justify-center text-center py-20 md:py-40 px-4 text-white mt-16 overflow-hidden">
   <div class="absolute inset-0">
     <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478340/seriate_9_xt5olt.jpg" class="w-full h-full object-cover">
     <div class="absolute inset-0 bg-orange-600 opacity-70"></div>
   </div>
   <div class="relative z-10 max-w-6xl mx-auto">
-    <h1 class="text-4xl md:text-6xl font-bold mb-6">Realizzazioni</h1>
-    <p class="text-lg mb-10">La Nostra Gallery</p>
-    <div class="flex flex-wrap justify-center gap-4">
-      <button onclick="filterCards('all', this)" class="filter-btn bg-white text-black font-semibold px-5 py-2 rounded-full shadow">Tutto</button>
-      <button onclick="filterCards('carpenteria', this)" class="filter-btn border border-white text-white px-5 py-2 rounded-full hover:bg-white hover:text-black transition">Carpenteria metallica</button>
-      <button onclick="filterCards('coperture', this)" class="filter-btn border border-white text-white px-5 py-2 rounded-full hover:bg-white hover:text-black transition">Coperture e lattoneria</button>
-      <button onclick="filterCards('progettazione', this)" class="filter-btn border border-white text-white px-5 py-2 rounded-full hover:bg-white hover:text-black transition">Progettazione e posa</button>
-      <button onclick="filterCards('pareti', this)" class="filter-btn border border-white text-white px-5 py-2 rounded-full hover:bg-white hover:text-black transition">Montaggio pareti</button>
+    <h1 class="text-3xl md:text-6xl font-bold mb-4 md:mb-6">Realizzazioni</h1>
+    <p class="text-base md:text-lg mb-6 md:mb-10">La Nostra Gallery</p>
+    <div class="flex flex-wrap justify-center gap-2 md:gap-4">
+      <button onclick="filterCards('all', this)" class="filter-btn bg-white text-black font-semibold px-3 md:px-5 py-1.5 md:py-2 rounded-full text-xs md:text-sm shadow">Tutto</button>
+      <button onclick="filterCards('carpenteria', this)" class="filter-btn border border-white text-white px-3 md:px-5 py-1.5 md:py-2 rounded-full text-xs md:text-sm hover:bg-white hover:text-black transition">Carpenteria metallica</button>
+      <button onclick="filterCards('coperture', this)" class="filter-btn border border-white text-white px-3 md:px-5 py-1.5 md:py-2 rounded-full text-xs md:text-sm hover:bg-white hover:text-black transition">Coperture e lattoneria</button>
+      <button onclick="filterCards('progettazione', this)" class="filter-btn border border-white text-white px-3 md:px-5 py-1.5 md:py-2 rounded-full text-xs md:text-sm hover:bg-white hover:text-black transition">Progettazione e posa</button>
+      <button onclick="filterCards('pareti', this)" class="filter-btn border border-white text-white px-3 md:px-5 py-1.5 md:py-2 rounded-full text-xs md:text-sm hover:bg-white hover:text-black transition">Montaggio pareti</button>
     </div>
   </div>
 </section>
@@ -127,7 +135,7 @@
 <div class="w-full max-w-4xl mx-auto h-px bg-red-600 opacity-40 my-12"></div>
 
 <!-- GRID -->
-<section class="px-4 md:px-6 pb-20">
+<section class="px-4 md:px-6 pb-12 md:pb-20">
   <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
   <div class="card" data-category="carpenteria" onclick="openGallery('gallery1', 'Castiglione Olona')">
     <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478732/castiglione_1_hgrko2.jpg">
