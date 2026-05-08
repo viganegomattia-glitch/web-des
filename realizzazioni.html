@@ -2,7 +2,6 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Realizzazioni - M.C.M.A Coperture</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
@@ -10,7 +9,7 @@
       position: relative;
       border-radius: 16px;
       overflow: hidden;
-      min-height: 280px;
+      min-height: 420px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.15);
       transition: box-shadow 0.3s, transform 0.3s;
       cursor: pointer;
@@ -74,11 +73,6 @@
     }
     .lb-btn:hover { background: rgba(220,38,38,0.8); }
     #lb-prev { left: 16px; }
-    @media (max-width: 640px) {
-      #lb-prev { left: auto; bottom: 24px; top: auto; transform: none; left: calc(50% - 64px); }
-      #lb-next { right: auto; bottom: 24px; top: auto; transform: none; left: calc(50% + 12px); }
-      #lightbox-img { max-height: 70vh; }
-    }
     #lb-next { right: 16px; }
     #lb-close {
       position: absolute; top: 16px; right: 20px;
@@ -91,8 +85,8 @@
 <body class="bg-white text-gray-900">
 
 <!-- NAVBAR -->
-<nav class="flex justify-between items-center px-4 py-4 border-b bg-white fixed top-0 w-full z-50 shadow-sm">
-  <a href="index.html"><img src="logo.jpg" class="h-12 md:h-16 object-contain"></a>
+<nav class="flex justify-between items-center px-6 md:px-8 py-5 border-b bg-white fixed top-0 w-full z-50">
+  <a href="index.html"><img src="logo.jpg" class="h-14 md:h-16"></a>
   <div class="hidden md:flex space-x-6 text-sm text-gray-600">
     <a href="servizi.html" class="hover:text-black">Servizi</a>
     <a href="realizzazioni.html" class="text-black font-semibold">Realizzazioni</a>
@@ -102,8 +96,8 @@
   <button class="md:hidden text-gray-700" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">☰</button>
 </nav>
 
-<div id="mobileMenu" class="hidden fixed top-16 left-0 w-full bg-white border-b z-40 shadow-md">
-  <div class="flex flex-col text-center py-4 space-y-4 text-gray-700 text-base font-medium">
+<div id="mobileMenu" class="hidden fixed top-20 left-0 w-full bg-white border-b z-40">
+  <div class="flex flex-col text-center py-4 space-y-4 text-gray-700">
     <a href="servizi.html">Servizi</a>
     <a href="realizzazioni.html">Realizzazioni</a>
     <a href="index.html">Chi siamo</a>
@@ -112,20 +106,20 @@
 </div>
 
 <!-- HERO -->
-<section class="relative flex items-center justify-center text-center py-20 md:py-40 px-4 text-white mt-16 overflow-hidden">
+<section class="relative flex items-center justify-center text-center py-40 px-4 text-white mt-20 overflow-hidden">
   <div class="absolute inset-0">
     <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478340/seriate_9_xt5olt.jpg" class="w-full h-full object-cover">
     <div class="absolute inset-0 bg-orange-600 opacity-70"></div>
   </div>
   <div class="relative z-10 max-w-6xl mx-auto">
-    <h1 class="text-3xl md:text-6xl font-bold mb-4 md:mb-6">Realizzazioni</h1>
-    <p class="text-base md:text-lg mb-6 md:mb-10">La Nostra Gallery</p>
-    <div class="flex flex-wrap justify-center gap-2 md:gap-4">
-      <button onclick="filterCards('all', this)" class="filter-btn bg-white text-black font-semibold px-4 py-2 rounded-full shadow text-sm">Tutto</button>
-      <button onclick="filterCards('carpenteria', this)" class="filter-btn border border-white text-white px-4 py-2 rounded-full hover:bg-white hover:text-black transition text-sm">Carpenteria metallica</button>
-      <button onclick="filterCards('coperture', this)" class="filter-btn border border-white text-white px-4 py-2 rounded-full hover:bg-white hover:text-black transition text-sm">Coperture e lattoneria</button>
-      <button onclick="filterCards('progettazione', this)" class="filter-btn border border-white text-white px-4 py-2 rounded-full hover:bg-white hover:text-black transition text-sm">Progettazione e posa</button>
-      <button onclick="filterCards('pareti', this)" class="filter-btn border border-white text-white px-4 py-2 rounded-full hover:bg-white hover:text-black transition text-sm">Montaggio pareti</button>
+    <h1 class="text-4xl md:text-6xl font-bold mb-6">Realizzazioni</h1>
+    <p class="text-lg mb-10">La Nostra Gallery</p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <button onclick="filterCards('all', this)" class="filter-btn bg-white text-black font-semibold px-5 py-2 rounded-full shadow">Tutto</button>
+      <button onclick="filterCards('carpenteria', this)" class="filter-btn border border-white text-white px-5 py-2 rounded-full hover:bg-white hover:text-black transition">Carpenteria metallica</button>
+      <button onclick="filterCards('coperture', this)" class="filter-btn border border-white text-white px-5 py-2 rounded-full hover:bg-white hover:text-black transition">Coperture e lattoneria</button>
+      <button onclick="filterCards('progettazione', this)" class="filter-btn border border-white text-white px-5 py-2 rounded-full hover:bg-white hover:text-black transition">Progettazione e posa</button>
+      <button onclick="filterCards('pareti', this)" class="filter-btn border border-white text-white px-5 py-2 rounded-full hover:bg-white hover:text-black transition">Montaggio pareti</button>
     </div>
   </div>
 </section>
@@ -133,7 +127,7 @@
 <div class="w-full max-w-4xl mx-auto h-px bg-red-600 opacity-40 my-12"></div>
 
 <!-- GRID -->
-<section class="px-4 md:px-6 py-6 pb-10 md:pb-20">
+<section class="px-4 md:px-6 pb-20">
   <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
   <div class="card" data-category="carpenteria" onclick="openGallery('gallery1', 'Castiglione Olona')">
     <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478732/castiglione_1_hgrko2.jpg">
@@ -167,7 +161,7 @@
     <div class="card-overlay"></div>
     <div class="card-content">
       <h2 class="text-white text-xl font-bold drop-shadow">Scalo Romana</h2>
-      <p class="text-gray-300 text-sm mb-2">Partecipazione a cantiere edile, intallazione struttura metallica ad ultimo piano edificio in costruzione</p>
+      <p class="text-gray-300 text-sm mb-2">Partecipazione a cantiere edile, installazione struttura metallica ad ultimo piano edificio in costruzione</p>
       <span class="btn-vedi">Vedi Gallery</span>
     </div>
   </div>
@@ -180,12 +174,12 @@
       <span class="btn-vedi">Vedi Gallery</span>
     </div>
   </div>
-  <div class="card" data-category="carpenteria" onclick="openGallery('gallery6', 'Vergiate')">
+  <div class="card" data-category="carpenteria pareti" onclick="openGallery('gallery6', 'Vergiate')">
     <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479858/vergiate_1_cgpzqm.jpg">
     <div class="card-overlay"></div>
     <div class="card-content">
       <h2 class="text-white text-xl font-bold drop-shadow">Vergiate</h2>
-      <p class="text-gray-300 text-sm mb-2">Realizzazione scheletro strutturale e pareti per edificio ad uso industriale</p><!--questo deve figurare anche in pareti-->
+      <p class="text-gray-300 text-sm mb-2">Realizzazione scheletro strutturale e pareti per edificio ad uso industriale</p>
       <span class="btn-vedi">Vedi Gallery</span>
     </div>
   </div>
@@ -203,7 +197,7 @@
     <div class="card-overlay"></div>
     <div class="card-content">
       <h2 class="text-white text-xl font-bold drop-shadow">Saronno</h2>
-      <p class="text-gray-300 text-sm mb-2">Sotistuzione vecchi pannelli di copertura con nuovi pannelli compositi idroresistenti</p>
+      <p class="text-gray-300 text-sm mb-2">Sostituzione vecchi pannelli di copertura con nuovi pannelli compositi idroresistenti</p>
       <span class="btn-vedi">Vedi Gallery</span>
     </div>
   </div>
@@ -225,12 +219,12 @@
       <span class="btn-vedi">Vedi Gallery</span>
     </div>
   </div>
-  <div class="card" data-category="progettazione" onclick="openGallery('gallery11', 'Cogliate')">
+  <div class="card" data-category="progettazione coperture" onclick="openGallery('gallery11', 'Cogliate')">
     <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478844/cogliate_1_c9g3ik.jpg">
     <div class="card-overlay"></div>
     <div class="card-content">
       <h2 class="text-white text-xl font-bold drop-shadow">Cogliate</h2>
-      <p class="text-gray-300 text-sm mb-2">Progettazione e installazione di struttura metallica con relativa copertura</p><!--questo deve figurare anche in coperture-->
+      <p class="text-gray-300 text-sm mb-2">Progettazione e installazione di struttura metallica con relativa copertura</p>
       <span class="btn-vedi">Vedi Gallery</span>
     </div>
   </div>
@@ -252,21 +246,21 @@
       <span class="btn-vedi">Vedi Gallery</span>
     </div>
   </div>
-  <div class="card" data-category="progettazione" onclick="openGallery('gallery14', 'Pavia')">
+  <div class="card" data-category="progettazione pareti" onclick="openGallery('gallery14', 'Pavia')">
     <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477909/pavia_0_rzb6yt.jpg">
     <div class="card-overlay"></div>
     <div class="card-content">
       <h2 class="text-white text-xl font-bold drop-shadow">Pavia</h2>
-      <p class="text-gray-300 text-sm mb-2">Progettazione e realizzazione parete esterna per capannone ad uso industriale</p><!--questo è pavia, modifichiamo anzichè creare due cantieri separati facciamolo comparire in pareti-->
+      <p class="text-gray-300 text-sm mb-2">Progettazione e realizzazione parete esterna per capannone ad uso industriale</p>
       <span class="btn-vedi">Vedi Gallery</span>
     </div>
   </div>
-  <div class="card" data-category="progettazione" onclick="openGallery('gallery15', 'Rescaldina')">
+  <div class="card" data-category="progettazione pareti" onclick="openGallery('gallery15', 'Rescaldina')">
     <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478637/rescaldina_1_talynv.jpg">
     <div class="card-overlay"></div>
     <div class="card-content">
       <h2 class="text-white text-xl font-bold drop-shadow">Rescaldina</h2>
-      <p class="text-gray-300 text-sm mb-2">Realizzazione elementi strutturali e pareti per edificio ad uso logistico</p><!--questo va anche in pareti-->
+      <p class="text-gray-300 text-sm mb-2">Realizzazione elementi strutturali e pareti per edificio ad uso logistico</p>
       <span class="btn-vedi">Vedi Gallery</span>
     </div>
   </div>
@@ -276,17 +270,6 @@
     <div class="card-content">
       <h2 class="text-white text-xl font-bold drop-shadow">Romano</h2>
       <p class="text-gray-300 text-sm mb-2">Progettazione e realizzazione intelaiatura metallica per struttura di copertura percorso pedonale</p>
-      <span class="btn-vedi">Vedi Gallery</span>
-    </div>
-  </div>
-
-  <!-- Pavia – pareti --> <!-- questo deve sparire-->
-  <div class="card" data-category="pareti" onclick="openGallery('gallery_pareti_pavia', 'Pavia')">
-    <img class="card-bg" src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477898/pavia_30_prifo2.jpg">
-    <div class="card-overlay"></div>
-    <div class="card-content">
-      <h2 class="text-white text-xl font-bold drop-shadow">Pavia</h2>
-      <p class="text-gray-300 text-sm mb-2">Montaggio pareti</p>
       <span class="btn-vedi">Vedi Gallery</span>
     </div>
   </div>
@@ -318,7 +301,6 @@
 
 <script>
 const galleries = {
-  "gallery_pareti_pavia": ["https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477898/pavia_30_prifo2.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477899/pavia_28_mi1b3z.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477898/pavia_29_tfvomy.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775477903/pavia_14_t425qx.jpg"],
   "gallery1": ["https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478732/castiglione_1_hgrko2.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478731/castiglione_2_gzvm7d.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478730/castiglione_3_ll82hx.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478728/castiglione_4_t1m9gq.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478726/castiglione_5_ww3hpt.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478725/castiglione_6_pd8kxg.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478724/castiglione_7_ueaeep.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478723/castiglione_8_qpdgjf.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478721/castiglione_9_jhuddb.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478720/castiglione_10_eu91je.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478719/castiglione_11_usjcvu.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478718/castiglione_12_rph6ga.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478716/castiglione_13_ov4zdl.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478715/castiglione_14_gd68tr.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478714/castiglione_15_waatuv.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478712/castiglione_16_buwyxk.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478711/castiglione_17_jgnir2.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478711/castiglione_18_riwmiy.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478710/castiglione_19_mqczmu.jpg"],
   "gallery2": ["https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478920/ceriano_1_gblrxz.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478918/ceriano_2_ssj7cf.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478916/ceriano_3_iujiov.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478914/ceriano_4_pi5yr3.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478912/ceriano_5_r9p54l.jpg"],
   "gallery3": ["https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478423/gorgonzola_0_qk1adu.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478422/gorgonzola_1_ur2ogv.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478422/gorgonzola_2_mkoajb.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478420/gorgonzola_3_ep3ju3.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478420/gorgonzola_4_tubdkl.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478419/gorgonzola_5_eradd2.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478418/gorgonzola_6_hacx3o.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478417/gorgonzola_7_hcx88x.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478416/gorgonzola_8_z8atcu.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478415/gorgonzola_9_dy2nhu.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478414/gorgonzola_10_ofvxon.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478413/gorgonzola_11_sk74qd.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478412/gorgonzola_12_nihkth.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478411/gorgonzola_13_zzcegj.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478410/gorgonzola_14_x8if4q.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478409/gorgonzola_15_pez0qg.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478408/gorgonzola_16_ltvcsl.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478407/gorgonzola_17_rsw1ga.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478407/gorgonzola_18_c4iv5p.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478406/gorgonzola_19_if9k4w.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478404/gorgonzola_20_yjyyvy.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478404/gorgonzola_21_hhaups.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478403/gorgonzola_22_g9antk.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478402/gorgonzola_23_jjrpfa.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478401/gorgonzola_24_topzuc.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478400/gorgonzola_25_ytgufz.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478400/gorgonzola_26_vbvgys.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478399/gorgonzola_27_velpmm.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478397/gorgonzola_28_n6nsmq.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478396/gorgonzola_29_iuvmga.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478396/gorgonzola_30_kzwqia.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478396/gorgonzola_32_xevkj9.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478395/gorgonzola_31_yx4id5.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478394/gorgonzola_33_idg724.jpg", "https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478394/gorgonzola_34_nbp5gt.jpg"],
@@ -385,7 +367,8 @@ document.getElementById('lightbox').addEventListener('click', e => {
 
 function filterCards(category, btn) {
   document.querySelectorAll(".card").forEach(card => {
-    card.style.display = (category === 'all' || card.getAttribute('data-category') === category) ? 'block' : 'none';
+    const cats = card.getAttribute('data-category').split(' ');
+    card.style.display = (category === 'all' || cats.includes(category)) ? 'block' : 'none';
   });
   document.querySelectorAll(".filter-btn").forEach(b => {
     b.classList.remove("bg-white", "text-black", "font-semibold");
