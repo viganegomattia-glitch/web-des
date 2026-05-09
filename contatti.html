@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contatti - M.C.M.A Coperture</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    a { word-break: break-word; }
+  </style>
 </head>
 <body class="bg-white text-gray-900">
 
@@ -29,19 +32,19 @@
 </div>
 
 <!-- HERO -->
-<section class="relative flex items-center justify-center text-center py-20 md:py-32 px-4 text-white mt-16 overflow-hidden">
+<section class="relative flex items-center justify-center text-center py-16 md:py-32 px-4 text-white mt-16 overflow-hidden">
   <div class="absolute inset-0">
     <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478340/seriate_9_xt5olt.jpg" class="w-full h-full object-cover">
     <div class="absolute inset-0 bg-orange-600 opacity-70"></div>
   </div>
   <div class="relative z-10 max-w-6xl mx-auto w-full">
-    <h1 class="text-3xl md:text-6xl font-bold mb-6">Come Contattarci</h1>
+    <h1 class="text-2xl md:text-6xl font-bold mb-4 md:mb-8">Come Contattarci</h1>
     <div class="flex items-center justify-center gap-4">
       <div class="hidden md:block w-1/4 bg-white rounded-2xl overflow-hidden shadow-lg">
         <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479697/gerenzano_4_tfu2kc.jpg" class="w-full h-48 object-cover">
       </div>
       <div class="w-full md:w-2/4 bg-white rounded-2xl overflow-hidden shadow-2xl">
-        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478410/gorgonzola_14_x8if4q.jpg" class="w-full h-52 md:h-72 object-cover">
+        <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775478410/gorgonzola_14_x8if4q.jpg" class="w-full h-40 md:h-72 object-cover">
       </div>
       <div class="hidden md:block w-1/4 bg-white rounded-2xl overflow-hidden shadow-lg">
         <img src="https://res.cloudinary.com/dxyh7igzt/image/upload/v1775479431/saronno_24_tc6vfv.jpg" class="w-full h-48 object-cover">
@@ -50,41 +53,72 @@
   </div>
 </section>
 
-<div class="w-full max-w-4xl mx-auto h-px bg-red-600 opacity-40 my-10 md:my-12"></div>
+<div class="w-full max-w-4xl mx-auto h-px bg-red-600 opacity-40 my-8 md:my-12"></div>
 
 <!-- CONTENUTO -->
-<section class="px-4 md:px-6 py-10 md:py-20">
-  <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
+<section class="px-4 md:px-6 py-6 md:py-20">
+  <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
 
-    <!-- Info -->
-    <div class="text-left space-y-4">
-      <h2 class="text-2xl font-semibold mb-4">Contattaci</h2>
-      <p class="text-gray-600">
-        Email: <a href="mailto:mcma.coperture@hotmail.com" class="text-blue-500 hover:underline">mcma.coperture@hotmail.com</a>
-      </p>
-      <p class="text-gray-600">
-        Telefono: <a href="tel:+393283480607" class="text-blue-500 hover:underline">+39 328 3480607</a>
-      </p>
-      <p class="text-gray-600">
-        Instagram: <a href="https://www.instagram.com/m.c.m.a.coperture" target="_blank" class="text-blue-500 hover:underline">@m.c.m.a.coperture</a>
-      </p>
-      <p class="text-gray-600">
-        Indirizzo: <a href="https://www.google.com/maps/search/?api=1&query=Via+Pasino+Sforza+61+San+Colombano+al+Lambro" target="_blank" class="text-blue-500 hover:underline">Via Pasino Sforza 61, San Colombano al Lambro</a>
-      </p>
+    <!-- Info contatti -->
+    <div class="space-y-5">
+      <h2 class="text-xl md:text-2xl font-semibold">Contattaci</h2>
+
+      <!-- Email -->
+      <a href="mailto:mcma.coperture@hotmail.com" class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl hover:bg-orange-50 transition">
+        <span class="text-2xl">✉️</span>
+        <div>
+          <p class="text-xs text-gray-400 uppercase font-semibold">Email</p>
+          <p class="text-sm text-blue-600">mcma.coperture@hotmail.com</p>
+        </div>
+      </a>
+
+      <!-- Telefono -->
+      <a href="tel:+393283480607" class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl hover:bg-orange-50 transition">
+        <span class="text-2xl">📞</span>
+        <div>
+          <p class="text-xs text-gray-400 uppercase font-semibold">Telefono</p>
+          <p class="text-sm text-blue-600">+39 328 3480607</p>
+        </div>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/m.c.m.a.coperture" target="_blank" class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl hover:bg-orange-50 transition">
+        <span class="text-2xl">📸</span>
+        <div>
+          <p class="text-xs text-gray-400 uppercase font-semibold">Instagram</p>
+          <p class="text-sm text-blue-600">@m.c.m.a.coperture</p>
+        </div>
+      </a>
+
+      <!-- Indirizzo -->
+      <a href="https://www.google.com/maps/search/?api=1&query=Via+Pasino+Sforza+61+San+Colombano+al+Lambro" target="_blank" class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl hover:bg-orange-50 transition">
+        <span class="text-2xl">📍</span>
+        <div>
+          <p class="text-xs text-gray-400 uppercase font-semibold">Indirizzo</p>
+          <p class="text-sm text-blue-600">Via Pasino Sforza 61, San Colombano al Lambro</p>
+        </div>
+      </a>
     </div>
 
     <!-- Form -->
     <form action="https://formspree.io/f/xwvyrzvl" method="POST" class="flex flex-col gap-4">
-      <input type="text" name="nome" placeholder="Nome" required class="p-4 border rounded-lg w-full text-base focus:outline-none focus:ring-2 focus:ring-orange-400">
-      <input type="email" name="email" placeholder="Email" required class="p-4 border rounded-lg w-full text-base focus:outline-none focus:ring-2 focus:ring-orange-400">
-      <textarea name="messaggio" placeholder="Messaggio" required class="p-4 border rounded-lg h-32 w-full text-base focus:outline-none focus:ring-2 focus:ring-orange-400"></textarea>
-      <button type="submit" class="px-6 py-4 bg-orange-600 text-white rounded-full text-base font-semibold w-full hover:bg-orange-700 transition">Invia</button>
+      <h2 class="text-xl md:text-2xl font-semibold">Scrivici</h2>
+      <input type="text" name="nome" placeholder="Nome" required
+        class="p-4 border border-gray-200 rounded-xl w-full text-base bg-gray-50 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:bg-white transition">
+      <input type="email" name="email" placeholder="Email" required
+        class="p-4 border border-gray-200 rounded-xl w-full text-base bg-gray-50 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:bg-white transition">
+      <textarea name="messaggio" placeholder="Messaggio" required
+        class="p-4 border border-gray-200 rounded-xl h-36 w-full text-base bg-gray-50 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:bg-white transition resize-none"></textarea>
+      <button type="submit"
+        class="px-6 py-4 bg-orange-600 text-white rounded-full text-base font-semibold w-full hover:bg-orange-700 active:scale-95 transition">
+        Invia messaggio
+      </button>
     </form>
 
   </div>
 </section>
 
-<div class="w-full max-w-4xl mx-auto h-px bg-red-600 opacity-40 my-10 md:my-12"></div>
+<div class="w-full max-w-4xl mx-auto h-px bg-red-600 opacity-40 my-8 md:my-12"></div>
 
 <!-- FOOTER -->
 <footer class="py-10 text-center text-sm text-gray-500 border-t space-y-2 px-4">
