@@ -7,6 +7,20 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     a { word-break: break-word; }
+    .btn-submit {
+      background-color: #ea580c;
+      color: white;
+      border-radius: 9999px;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      width: 100%;
+      display: block;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .btn-submit:hover { background-color: #c2410c; }
   </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -63,7 +77,6 @@
     <div class="space-y-5">
       <h2 class="text-xl md:text-2xl font-semibold">Contattaci</h2>
 
-      <!-- Email -->
       <a href="mailto:mcma.coperture@hotmail.com" class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl hover:bg-orange-50 transition">
         <span class="text-2xl">✉️</span>
         <div>
@@ -72,7 +85,6 @@
         </div>
       </a>
 
-      <!-- Telefono -->
       <a href="tel:+393283480607" class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl hover:bg-orange-50 transition">
         <span class="text-2xl">📞</span>
         <div>
@@ -81,7 +93,6 @@
         </div>
       </a>
 
-      <!-- Instagram -->
       <a href="https://www.instagram.com/m.c.m.a.coperture" target="_blank" class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl hover:bg-orange-50 transition">
         <span class="text-2xl">📸</span>
         <div>
@@ -90,7 +101,6 @@
         </div>
       </a>
 
-      <!-- Indirizzo -->
       <a href="https://www.google.com/maps/search/?api=1&query=Via+Pasino+Sforza+61+San+Colombano+al+Lambro" target="_blank" class="flex items-center gap-3 p-4 bg-gray-50 rounded-xl hover:bg-orange-50 transition">
         <span class="text-2xl">📍</span>
         <div>
@@ -104,15 +114,12 @@
     <form action="https://formspree.io/f/xwvyrzvl" method="POST" class="flex flex-col gap-4">
       <h2 class="text-xl md:text-2xl font-semibold">Scrivici</h2>
       <input type="text" name="nome" placeholder="Nome" required
-        class="p-4 border border-gray-200 rounded-xl w-full text-base bg-gray-50 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:bg-white transition">
+        class="p-4 border border-gray-200 rounded-xl w-full text-base bg-gray-50 focus:outline-none focus:bg-white transition">
       <input type="email" name="email" placeholder="Email" required
-        class="p-4 border border-gray-200 rounded-xl w-full text-base bg-gray-50 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:bg-white transition">
+        class="p-4 border border-gray-200 rounded-xl w-full text-base bg-gray-50 focus:outline-none focus:bg-white transition">
       <textarea name="messaggio" placeholder="Messaggio" required
-        class="p-4 border border-gray-200 rounded-xl h-36 w-full text-base bg-gray-50 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:bg-white transition resize-none"></textarea>
-      <button type="submit"
-        class="px-6 py-4 bg-orange-600 text-white rounded-full text-base font-semibold w-full hover:bg-orange-700 active:scale-95 transition">
-        Invia messaggio
-      </button>
+        class="p-4 border border-gray-200 rounded-xl h-36 w-full text-base bg-gray-50 focus:outline-none focus:bg-white transition resize-none"></textarea>
+      <button type="submit" class="btn-submit">Invia messaggio</button>
     </form>
 
   </div>
