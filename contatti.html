@@ -74,12 +74,12 @@
     </div>
 
     <!-- Form -->
-    <div class="flex flex-col gap-4">
-      <input type="text" name="nome" placeholder="Nome" class="p-4 border rounded-lg w-full text-base">
-      <input type="email" name="email" placeholder="Email" class="p-4 border rounded-lg w-full text-base">
-      <textarea name="messaggio" placeholder="Messaggio" class="p-4 border rounded-lg h-32 w-full text-base"></textarea>
-      <button class="px-6 py-4 bg-orange-600 text-white rounded-full text-base font-semibold w-full">Invia</button>
-    </div>
+    <form action="https://formspree.io/f/xwvyrzvl" method="POST" class="flex flex-col gap-4">
+      <input type="text" name="nome" placeholder="Nome" required class="p-4 border rounded-lg w-full text-base focus:outline-none focus:ring-2 focus:ring-orange-400">
+      <input type="email" name="email" placeholder="Email" required class="p-4 border rounded-lg w-full text-base focus:outline-none focus:ring-2 focus:ring-orange-400">
+      <textarea name="messaggio" placeholder="Messaggio" required class="p-4 border rounded-lg h-32 w-full text-base focus:outline-none focus:ring-2 focus:ring-orange-400"></textarea>
+      <button type="submit" class="px-6 py-4 bg-orange-600 text-white rounded-full text-base font-semibold w-full hover:bg-orange-700 transition">Invia</button>
+    </form>
 
   </div>
 </section>
